@@ -1,11 +1,14 @@
 package kurskatalog;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class AccountController{
     
-    String username;
-    String plaintext;
+    private String username;
+    private String plaintext;
     
-    Boolean admin;
+    private boolean admin;
 	    
     
     
@@ -16,5 +19,30 @@ public class AccountController{
     public String login (){
 	return null;
     }
+    
+    public String getUsername(){
+	return username;
+    }
+    
+    public String getPlaintext(){
+	return plaintext;
+    }
+    
+    public boolean isAdmin(){
+	return admin;
+    }
+    
+    public void setUsername(String newUsername){
+	username = newUsername;
+    }
+    
+    public void setPlaintext(String newPlaintext){
+	plaintext = newPlaintext;
+    }
+    
+    public void setAdmin(boolean isAdmin){
+	admin = isAdmin;
+    }
+    
     
 }
