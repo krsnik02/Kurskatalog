@@ -1,5 +1,6 @@
 *.class
 nb-configuration.xml
+glassfish-web.xml
 
 # Package Files #
 *.jar
