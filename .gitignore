@@ -8,6 +8,9 @@ glassfish-web.xml
 *.ear
 
 target/*
+KurskatalogDB/*
+derby.log
+sun-appserv-samples/*
 
 # VIM
 .*.sw?
