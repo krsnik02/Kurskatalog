@@ -8,66 +8,34 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class AccountController
 {
-    private String username;
-    private String plaintext;
-    private boolean admin;
-
-    private Account account = null;
+    private Account account = new Account();
+    private boolean logged_in = false;
 
     @EJB
     private AccountEJB accountEJB;
     
     public String register()
     {
-	account = new Account();
-	account.setUsername( username );
-	account.setHashedPassword( plaintext /*TODO: hash*/ );
-	account.setAdmin( admin );
 	accountEJB.register( account );
 	return "index.xhtml";
     }
     
     public String login ()
     {
-	account = new Account();
-	account.setUsername( username );
-	account.setHashedPassword( plaintext /*TODO: hash*/ );
-	account = accountEJB.login( account );		
+	account = accountEJB.login( account );	
+	if ( account == null )
+	{
+		account = new Account();
+		logged_in = false;
+	}
+	else
+	{
+		logged_in = true;
+	}
+
 	return "index.xhtml";
     }
-    
-
-
-    public String getUsername()
-    {
-	return username;
-    }
-    
-    public String getPlaintextPassword()
-    {
-	return plaintext;
-    }
-    
-    public boolean isAdmin()
-    {
-	return admin;
-    }
-    
-    public void setUsername(String newUsername)
-    {
-	username = newUsername;
-    }
-    
-    public void setPlaintextPassword(String newPlaintext)
-    {
-	plaintext = newPlaintext;
-    }
-    
-    public void setAdmin(boolean isAdmin)
-    {
-	admin = isAdmin;
-    }
-
+      
     public void setAccount( Account acct )
     {
         account = acct;

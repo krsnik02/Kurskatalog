@@ -13,13 +13,13 @@
 		<h:form id="register" preprendId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Username : "/>
-				<h:inputText id="username" value="#{accountController.username}" />
+				<h:inputText id="username" value="#{accountController.account.username}" />
 			
 				<h:outputLabel value="Password : "/>
-				<h:inputText id="password" value="#{accountController.plaintextPassword}" />
+				<h:inputText id="password" value="#{accountController.account.plaintextPassword}" />
 
 				<h:outputLabel value="Admin : "/>
-				<h:selectBooleanCheckbox id="admin" value="#{accountController.admin}" />
+				<h:selectBooleanCheckbox id="admin" value="#{accountController.account.admin}" />
 			</h:panelGrid>
 			<h:commandButton value="Register" action="#{accountController.register}" />
 		</h:form>

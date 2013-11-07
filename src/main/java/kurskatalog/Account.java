@@ -33,4 +33,7 @@ public class Account
 
 	public boolean isAdmin() { return admin; }
 	public void setAdmin( boolean admin_ ) { admin = admin_; }
+
+	public String getPlaintextPassword() { return null; }
+	public void setPlaintextPassword( String plaintext_ ) { password = plaintext_; /*FIX THIS*/ }
 }
