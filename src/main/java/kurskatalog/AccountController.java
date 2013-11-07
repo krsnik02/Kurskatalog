@@ -2,32 +2,42 @@ package kurskatalog;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-public class AccountController{
-    
+@SessionScoped
+public class AccountController
+{
     private String username;
     private String plaintext;
     private boolean admin;
+
+    private Account account = null;
 
     @EJB
     private AccountEJB accountEJB;
     
     public String register()
     {
-	Account account = new Account();
+	account = new Account();
 	account.setUsername( username );
 	account.setHashedPassword( plaintext /*TODO: hash*/ );
 	account.setAdmin( admin );
-	accountEJB.createAccount( account );
+	accountEJB.register( account );
 	return "index.xhtml";
     }
     
     public String login ()
     {
+	account = new Account();
+	account.setUsername( username );
+	account.setHashedPassword( plaintext /*TODO: hash*/ );
+	account = accountEJB.login( account );		
 	return "index.xhtml";
     }
     
+
+
     public String getUsername()
     {
 	return username;
@@ -56,6 +66,16 @@ public class AccountController{
     public void setAdmin(boolean isAdmin)
     {
 	admin = isAdmin;
+    }
+
+    public void setAccount( Account acct )
+    {
+        account = acct;
+    }
+
+    public Account getAccount()
+    {
+        return account;
     }
     
     
