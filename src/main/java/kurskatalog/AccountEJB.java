@@ -11,9 +11,10 @@ public class AccountEJB
     @PersistenceContext(unitName = "KurskatalogPU")
     private EntityManager em;
 
-    public void register( Account account )
+    public Account register( Account account )
     {
 	em.persist( account );
+	return account;
     }
 
     public Account login( Account account )
