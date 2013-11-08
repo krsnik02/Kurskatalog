@@ -1,39 +1,48 @@
 package kurskatalog;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Account
 {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
 
-	private String username;
-	private String password;
-	private boolean admin;
+    @Column(unique=true)
+    private String username;
 
-	/* Constructors */
+    private String password;
+    private boolean admin;
 
-	public Account() {}
+    /* Constructors */
 
-	/* Getters/Setters */
+    public Account() {}
 
-	public long getId() { return id; }
-	public void setId( long id_ ) { id = id_; }
+    /* Getters/Setters */
 
-	public String getUsername() { return username; }
-	public void setUsername( String username_ ) { username = username_; }
+    public long getId() { return id; }
+    public void setId( long id_ ) { id = id_; }
 
-	public String getHashedPassword() { return password; }
-	public void setHashedPassword( String password_ ) { password = password_; }
+    public String getUsername() { return username; }
+    public void setUsername( String username_ ) { username = username_; }
 
-	public boolean isAdmin() { return admin; }
-	public void setAdmin( boolean admin_ ) { admin = admin_; }
+    public String getHashedPassword() { return password; }
+    public void setHashedPassword( String password_ ) { password = password_; }
 
-	public String getPlaintextPassword() { return null; }
-	public void setPlaintextPassword( String plaintext_ ) { password = plaintext_; /*FIX THIS*/ }
+    public boolean isAdmin() { return admin; }
+    public void setAdmin( boolean admin_ ) { admin = admin_; }
+
+    public String getPlaintextPassword() { return null; }
+    public void setPlaintextPassword( String plaintext_ ) 
+    {
+        password = plaintext_; /*FIX THIS*/ 
+    }
 }

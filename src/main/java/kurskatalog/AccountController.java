@@ -26,12 +26,12 @@ public class AccountController
 	account = accountEJB.login( account );	
 	if ( account == null )
 	{
-		account = new Account();
-		loggedIn = false;
+	    account = new Account();
+	    loggedIn = false;
 	}
 	else
 	{
-		loggedIn = true;
+	    loggedIn = true;
 	}
 
 	return "index.xhtml";
