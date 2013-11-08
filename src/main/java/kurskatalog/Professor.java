@@ -10,7 +10,11 @@ public class Professor extends Account
 
     /* Constructors */
 
-    public Professor() {}
+    public Professor() 
+    {
+        firstName = "";
+	lastName = "";
+    }
 
     /* Getters/Setters */
 

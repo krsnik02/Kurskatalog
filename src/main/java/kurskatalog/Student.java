@@ -10,7 +10,11 @@ public class Student extends Account
 
     /* Constructors */
 
-    public Student() {}
+    public Student() 
+    {
+        firstName = "";
+        lastName = "";
+    }
 
     /* Getters/Setters */
 
