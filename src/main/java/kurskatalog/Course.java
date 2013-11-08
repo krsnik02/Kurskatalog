@@ -18,7 +18,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Course {
     
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
     
     private String name;
@@ -33,9 +34,7 @@ public class Course {
     
     private CourseType type;
     
-    public Course(){
-	
-    }
+    public Course(){}
     
     public long getID(){ return id; }
     
