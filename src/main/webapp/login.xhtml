@@ -16,7 +16,7 @@
 				<h:inputText id="username" value="#{accountController.account.username}" />
 				
 				<h:outputLabel value="Password : " />
-				<h:inputText id="password" value="#{accountController.account.plaintextPassword}" />
+				<h:inputSecret id="password" value="#{accountController.account.plaintextPassword}" />
 			</h:panelGrid>
 			<h:commandButton value="Login" action="#{accountController.login}" />
 		</h:form>
