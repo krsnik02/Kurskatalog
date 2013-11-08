@@ -31,18 +31,14 @@ public class Department {
     
         
     public long getID(){ return id; }
-    
     public void setID( long id_ ) { id = id_; }
     
     public String getName() { return name; }
-    
     public void setName( String name_){ name = name_; }
     
     public String getCode() { return code; }
-    
     public void setCode( String code_){ code = code_; }
     
     public Professor getHeadId(){ return headId; }
-    
     public void setHeadId( Professor headId_ ){ headId = headId_; }
 }

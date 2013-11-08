@@ -35,18 +35,14 @@ public class Prerequisite {
     public Prerequisite(){}
     
     public long getID(){ return id; }
-    
     public void setID( long id_ ) { id = id_; }
     
     public Course getCourseId(){ return courseId; }
-    
     public void setCourseId( Course courseId_ ){  courseId = courseId_; }
     
     public List<Course> getPrerequisiteCourseIds(){ return prerequisiteCourseIds; }
-    
     public void setPrerequisiteCourseIds( List<Course> prerequisiteCourseIds_ ) { prerequisiteCourseIds = prerequisiteCourseIds_; }
     
     public boolean getIsCoRequisite(){ return isCorequisite; }
-    
     public void setIsCoRequisite( boolean isCorequisite_ ) { isCorequisite = isCorequisite_; }
 }

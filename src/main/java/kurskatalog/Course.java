@@ -37,26 +37,20 @@ public class Course {
     public Course(){}
     
     public long getID(){ return id; }
-    
     public void setID( long id_ ) { id = id_; }
     
     public String getName() { return name; }
-    
     public void setName( String name_){ name = name_; }
     
     public String getDescription(){ return description; }
-    
     public void setDescription( String description_ ){ description = description_; }
     
     public Department getDepartmentId (){ return departmentId; }
-    
     public void setDepartmentId( Department departmentId_ ){ departmentId = departmentId_; } 
     
     public int getCode(){ return code; }
-    
     public void setCode( int code_ ){ code = code_; }
     
     public CourseType getType(){ return type; }
-    
     public void setType( CourseType type_ ){ type = type_; }
 }
