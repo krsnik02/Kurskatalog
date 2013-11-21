@@ -15,6 +15,7 @@
 			<c:when test="#{accountController.loggedIn}">
 				<p>Welcome <h:outputText value="#{accountController.account.username}" />!</p>
 				<p><h:form><h:commandLink value="Logout" action="#{accountController.logout}" /></h:form></p>
+				<p><h:link outcome="list-students.xhtml" value="Students" /></p>
 			</c:when>
 			
 			<c:otherwise>
