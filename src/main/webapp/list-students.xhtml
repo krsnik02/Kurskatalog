@@ -6,8 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       lang="en" xml:lang="en">
 	<h:head>
-		<meta http-equiv="content-type" 
-                      content="text/html; charset=UTF-8" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title>Kurskatalog - Students</title>
 	</h:head>
 	<h:body>
@@ -28,10 +27,16 @@
 				<h:outputText value="#{student.lastName}" />
 			</h:column>
 			<h:column>
-				<f:facet name="username">
+				<f:facet name="header">
 					<h:outputText value="Username" />
 				</f:facet>
 				<h:outputText value="#{student.username}" />
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:commandLink value="Modify" action="#{studentController.modifyStudent( student )}" />
+					<h:commandLink value="Delete" action="#{studentController.deleteStudent( student )}" />
+				</h:form>
 			</h:column>
 		</h:dataTable>
 		<p><h:link outcome="create-student.xhtml" value="Add Student" /></p>

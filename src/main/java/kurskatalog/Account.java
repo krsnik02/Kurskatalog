@@ -23,7 +23,7 @@ public class Account
     private String username;
 
     private String password;
-    private boolean admin;
+    private boolean admin = false;
 
     /* Constructors */
 

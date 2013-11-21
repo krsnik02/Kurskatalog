@@ -21,13 +21,6 @@ public class StudentController
         students = accountEJB.getAllStudents();
     }
 
-    public String createStudent()
-    {
-	accountEJB.persistStudent( student );
-	students = accountEJB.getAllStudents();
-        return "list-students.xhtml";
-    }
-
     public String updateStudent()
     {
 	accountEJB.persistStudent( student );
@@ -35,7 +28,13 @@ public class StudentController
         return "list-students.xhtml";
     }
 
-    public String deleteStudent()
+    public String modifyStudent( Student stud )
+    {
+	student = stud;
+        return "modify-student.xhtml";
+    }
+
+    public String deleteStudent( Student stud )
     {
 	accountEJB.deleteStudent( student );
 	students = accountEJB.getAllStudents();

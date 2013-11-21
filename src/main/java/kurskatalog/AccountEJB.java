@@ -37,14 +37,16 @@ public class AccountEJB
 
     public void persistStudent( Student stud )
     {
+	em.persist( stud );
     }
 
     public void deleteStudent( Student stud )
     {
+	em.remove( stud );
     }
  
     public List<Student> getAllStudents()
     {
-        return null;
+        return em.createQuery( "SELECT s FROM Student s", Student.class ).getResultList();
     }
 }
