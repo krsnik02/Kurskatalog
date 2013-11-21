@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.NoResultException;
+import java.util.List;
 
 @Stateless
 public class AccountEJB
@@ -32,5 +33,18 @@ public class AccountEJB
 	}
 
 	return account;
+    }
+
+    public void persistStudent( Student stud )
+    {
+    }
+
+    public void deleteStudent( Student stud )
+    {
+    }
+ 
+    public List<Student> getAllStudents()
+    {
+        return null;
     }
 }
