@@ -35,15 +35,16 @@ public class AccountEJB
 	return account;
     }
 
-    public void persistStudent( Student stud )
+    public void persist( Student stud )
     {
 	em.persist( stud );
     }
 
-    public void deleteStudent( Student stud )
+    public void remove( Student stud )
     {
-	em.remove( stud );
+        em.remove( em.merge( stud ) );
     }
+
  
     public List<Student> getAllStudents()
     {

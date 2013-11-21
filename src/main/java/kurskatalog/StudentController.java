@@ -23,7 +23,7 @@ public class StudentController
 
     public String updateStudent()
     {
-	accountEJB.persistStudent( student );
+	accountEJB.persist( student );
 	students = accountEJB.getAllStudents();
         return "list-students.xhtml";
     }
@@ -36,7 +36,8 @@ public class StudentController
 
     public String deleteStudent( Student stud )
     {
-	accountEJB.deleteStudent( student );
+	students.remove( stud );
+	accountEJB.remove( stud );
 	students = accountEJB.getAllStudents();
         return "list-students.xhtml";
     }
