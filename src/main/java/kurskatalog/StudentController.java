@@ -24,14 +24,14 @@ public class StudentController
     public String updateStudent()
     {
 	students = null;
-	accountEJB.merge( student );
+	accountEJB.mergeStudent( student );
 	students = accountEJB.getAllStudents();
         return "list-students.xhtml";
     }
 
     public String createStudent()
     {
-        accountEJB.persist( student );
+        accountEJB.persistStudent( student );
 	students = accountEJB.getAllStudents();
 	return "list-students.xhtml";
     }
@@ -45,7 +45,7 @@ public class StudentController
     public String deleteStudent( Student stud )
     {
 	students = null;
-	accountEJB.remove( stud );
+	accountEJB.removeStudent( stud );
 	students = accountEJB.getAllStudents();
         return "list-students.xhtml";
     }
