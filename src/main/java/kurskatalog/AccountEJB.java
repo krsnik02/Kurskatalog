@@ -35,24 +35,29 @@ public class AccountEJB
 	return account;
     }
 
-    public void persistStudent( Student stud )
+    public void persistAccount( Account acct )
     {
-	em.persist( stud );
+	em.persist( acct );
     }
 
-    public void mergeStudent( Student stud )
+    public void mergeAccount( Account acct )
     {
-        em.merge( stud );
+        em.merge( acct );
     }
 
-    public void removeStudent( Student stud )
+    public void removeAccount( Account acct )
     {
-        em.remove( em.merge( stud ) );
+        em.remove( em.merge( acct ) );
     }
 
  
     public List<Student> getAllStudents()
     {
         return em.createQuery( "SELECT s FROM Student s", Student.class ).getResultList();
+    }
+
+    public List<Professor> getAllProfessors()
+    {
+        return em.createQuery( "SELECT p FROM Professor p", Professor.class ).getResultList();
     }
 }

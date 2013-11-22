@@ -12,8 +12,8 @@
 		<h1>Kurskatalog</h1>
 		<h2>Modify Student</h2>
 		<h:form id="modify-student" prependId="false">
+			<h:inputHidden id="id" value="#{studentController.student.id}" />
 			<h:panelGrid columns="2">
-				<h:inputHidden id="id" value="#{studentController.student.id}" />
 				<h:outputLabel value="First Name : " />
 				<h:inputText id="firstName" value="#{studentController.student.firstName}" />
 				<h:outputLabel value="Last Name : " />

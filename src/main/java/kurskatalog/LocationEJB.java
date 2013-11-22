@@ -26,6 +26,11 @@ public class LocationEJB {
 	em.persist( loc );
     }
 
+    public void merge( Location loc )
+    {
+        em.merge( loc );
+    }
+
     public void remove( Location loc )
     {
         em.remove( em.merge( loc ) );

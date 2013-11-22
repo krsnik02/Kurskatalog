@@ -16,6 +16,7 @@
 				<p>Welcome <h:outputText value="#{accountController.account.username}" />!</p>
 				<p><h:form><h:commandLink value="Logout" action="#{accountController.logout}" /></h:form></p>
 				<p><h:link outcome="list-students.xhtml" value="Students" /></p>
+				<p><h:link outcome="list-professors.xhtml" value="Professors" /></p>
 			</c:when>
 			
 			<c:otherwise>
