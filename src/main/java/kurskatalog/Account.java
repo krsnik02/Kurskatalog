@@ -12,32 +12,41 @@ import javax.security.auth.kerberos.KerberosPrincipal;
 import javax.security.auth.kerberos.KerberosKey;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Account
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Account
 {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
+    private String firstName;
+    private String lastName;
+
     @Column(unique=true)
     private String username;
 
     private String password;
-    private boolean admin = false;
+
 
     /* Constructors */
-
     public Account() 
     {
+	firstName = "";
+	lastName = "";
         username = "";
-        password = null;
-        admin = false;
+        password = "";
     }
 
     /* Getters/Setters */
 
     public long getId() { return id; }
     public void setId( long id_ ) { id = id_; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName( String first ) { firstName = first; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName( String last ) { lastName = last; }
 
     public String getUsername() { return username; }
     public void setUsername( String username_ ) 
@@ -50,9 +59,6 @@ public class Account
     { 
         password = password_; 
     }
-
-    public boolean isAdmin() { return admin; }
-    public void setAdmin( boolean admin_ ) { admin = admin_; }
 
     public String getPlaintextPassword() { return null; }
     public void setPlaintextPassword( String plaintext ) 

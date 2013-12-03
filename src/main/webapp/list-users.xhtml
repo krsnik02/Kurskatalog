@@ -23,9 +23,10 @@
 			<ul>
 				<li><a href="#tab-students">Students</a></li>
 				<li><a href="#tab-professors">Professors</a></li>
-				<li><a href="#tab-users">Other Users</a></li>
+				<li><a href="#tab-admins">Administrators</a></li>
 			</ul>
 
+			<!-- List of all students -->
 			<div id="tab-students">
 				<h:dataTable id="students" value="#{userController.listStudents()}" var="stud" border="1">
 					<h:column>
@@ -47,9 +48,9 @@
 						<f:form><h:commandLink value="Delete" action="#{userController.delete(stud)}" /></f:form>
 					</h:column>
 				</h:dataTable>
-				<p><h:link outcome="create-student.xhtml" value="New Student" /></p>
 			</div>
 
+			<!-- List of all professors -->
 			<div id="tab-professors">
 				<h:dataTable id="professors" value="#{userController.listProfessors()}" var="prof" border="1">
 					<h:column>
@@ -71,24 +72,32 @@
 						<f:form><h:commandLink value="Delete" action="#{userController.delete(prof)}" /></f:form>
 					</h:column>
 				</h:dataTable>
-				<p><h:link outcome="create-professor.xhtml" value="New Professor" /></p>
 			</div>
 
-			<div id="tab-users">
-				<h:dataTable id="users" value="#{userController.listOtherUsers()}" var="user" border="1">
+			<!-- List of all administrators -->
+			<div id="tab-admins">
+				<h:dataTable id="users" value="#{userController.listAdministrators()}" var="admin" border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="First Name" /></f:facet>
+						<h:outputText value="#{admin.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
+						<h:outputText value="#{admin.lastName}" />
+					</h:column>
 					<h:column>
 						<f:facet name="header"><h:outputText value="Username" /></f:facet>
-						<h:outputText value="#{user.username}" />
+						<h:outputText value="#{admin.username}" />
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Modify" action="#{userController.modify(user)}" /></f:form>
+						<f:form><h:commandLink value="Modify" action="#{userController.modify(admin)}" /></f:form>
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Delete" action="#{userController.delete(user)}" /></f:form>
+						<f:form><h:commandLink value="Delete" action="#{userController.delete(admin)}" /></f:form>
 					</h:column>
 				</h:dataTable>
-				<p><h:link outcome="create-user.xhtml" value="New User" /></p>
 			</div>
 		</div>
+		<p><h:link outcome="create-user.xhtml" value="New User" /></p>
 	</h:body>
 </html>
