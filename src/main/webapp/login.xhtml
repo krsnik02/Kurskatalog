@@ -13,12 +13,12 @@
 		<h:form id="login" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{accountController.credentials.username}" />
+				<h:inputText id="username" value="#{loginController.credentials.username}" />
 				
 				<h:outputLabel value="Password : " />
-				<h:inputSecret id="password" value="#{accountController.credentials.plaintextPassword}" />
+				<h:inputSecret id="password" value="#{loginController.credentials.plaintextPassword}" />
 			</h:panelGrid>
-			<h:commandButton value="Login" action="#{accountController.login}" />
+			<h:commandButton value="Login" action="#{loginController.login()}" />
 		</h:form>
 	</h:body>
 </html>

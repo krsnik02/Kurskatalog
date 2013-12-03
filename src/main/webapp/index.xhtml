@@ -12,9 +12,9 @@
 	<h:body>
 		<h1>Kurskatalog Main Page</h1>		
 		<c:choose>
-			<c:when test="#{accountController.loggedIn}">
-				<p>Welcome <h:outputText value="#{accountController.account.firstName}" /> <h:outputText value="#{accountController.account.lastName}" />!</p>
-				<p><h:form><h:commandLink value="Logout" action="#{accountController.logout}" /></h:form></p>
+			<c:when test="#{loginController.loggedIn}">
+				<p>Welcome <h:outputText value="#{loginController.account.firstName}" /> <h:outputText value="#{loginController.account.lastName}" />!</p>
+				<p><h:form><h:commandLink value="Logout" action="#{loginController.logout()}" /></h:form></p>
 				<p><h:link outcome="list-users.xhtml" value="Users" /></p>
 			</c:when>
 			

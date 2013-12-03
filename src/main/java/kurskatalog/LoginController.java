@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class AccountController
+public class LoginController
 {
     private Credentials credentials = new Credentials();
     private Account account = null;
