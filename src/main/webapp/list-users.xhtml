@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun/com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" lang="en" xml:lang="en">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kurskatalog - Users</title>
+
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="/resources/demos/style.css" />
+
+		<script>
+			$(function() {
+				$('#tabs-users').tabs();
+			});
+		</script>	
+	</h:head>
+	<h:body>
+		<h1><h:link outcome="index.html" value="Kurskatalog" /></h1>
+
+		<div id="tabs-users">
+			<ul>
+				<li><a href="#tab-students">Students</a></li>
+				<li><a href="#tab-professors">Professors</a></li>
+				<li><a href="#tab-users">Other Users</a></li>
+			</ul>
+
+			<div id="tab-students">
+				<h:dataTable id="students" value="#{userController.listStudents()}" var="stud" border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="First Name" /></f:facet>
+						<h:outputText value="#{stud.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
+						<h:outputText value="#{stud.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Username" /></f:facet>
+						<h:outputText value="#{stud.username}" />
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Modify" action="#{userController.modify(stud)}" /></f:form>
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Delete" action="#{userController.delete(stud)}" /></f:form>
+					</h:column>
+				</h:dataTable>
+				<p><h:link outcome="create-student.xhtml" value="New Student" /></p>
+			</div>
+
+			<div id="tab-professors">
+				<h:dataTable id="professors" value="#{userController.listProfessors()}" var="prof" border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="First Name" /></f:facet>
+						<h:outputText value="#{prof.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
+						<h:outputText value="#{prof.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Username" /></f:facet>
+						<h:outputText value="#{prof.username}" />
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Modify" action="#{userController.modify(prof)}" /></f:form>
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Delete" action="#{userController.delete(prof)}" /></f:form>
+					</h:column>
+				</h:dataTable>
+				<p><h:link outcome="create-professor.xhtml" value="New Professor" /></p>
+			</div>
+
+			<div id="tab-users">
+				<h:dataTable id="users" value="#{userController.listOtherUsers()}" var="user" border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="Username" /></f:facet>
+						<h:outputText value="#{user.username}" />
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Modify" action="#{userController.modify(user)}" /></f:form>
+					</h:column>
+					<h:column>
+						<f:form><h:commandLink value="Delete" action="#{userController.delete(user)}" /></f:form>
+					</h:column>
+				</h:dataTable>
+				<p><h:link outcome="create-user.xhtml" value="New User" /></p>
+			</div>
+		</div>
+	</h:body>
+</html>
