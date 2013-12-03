@@ -38,19 +38,24 @@ public class AccountEJB
         em.merge( acct );
     }
 
-    public void removeAccount( Account acct )
+    public void deleteAccount( Account acct )
     {
         em.remove( em.merge( acct ) );
     }
 
  
-    public List<Student> getAllStudents()
+    public List<Student> listStudents()
     {
         return em.createQuery( "SELECT s FROM Student s", Student.class ).getResultList();
     }
 
-    public List<Professor> getAllProfessors()
+    public List<Professor> listProfessors()
     {
         return em.createQuery( "SELECT p FROM Professor p", Professor.class ).getResultList();
+    }
+
+    public List<Administrator> listAdministrators()
+    {
+        return em.createQuery( "SELECT a FROM Administrator a", Administrator.class ).getResultList();
     }
 }

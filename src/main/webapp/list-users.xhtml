@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun/com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" lang="en" xml:lang="en">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title>Kurskatalog - Users</title>
@@ -39,13 +39,13 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header"><h:outputText value="Username" /></f:facet>
-						<h:outputText value="#{stud.username}" />
+						<h:outputText value="#{stud.credentials.username}" />
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Modify" action="#{userController.modify(stud)}" /></f:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modify(stud)}" /></h:form>
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Delete" action="#{userController.delete(stud)}" /></f:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.delete(stud)}" /></h:form>
 					</h:column>
 				</h:dataTable>
 			</div>
@@ -63,13 +63,13 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header"><h:outputText value="Username" /></f:facet>
-						<h:outputText value="#{prof.username}" />
+						<h:outputText value="#{prof.credentials.username}" />
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Modify" action="#{userController.modify(prof)}" /></f:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modify(prof)}" /></h:form>
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Delete" action="#{userController.delete(prof)}" /></f:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.delete(prof)}" /></h:form>
 					</h:column>
 				</h:dataTable>
 			</div>
@@ -87,13 +87,13 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header"><h:outputText value="Username" /></f:facet>
-						<h:outputText value="#{admin.username}" />
+						<h:outputText value="#{admin.credentails.username}" />
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Modify" action="#{userController.modify(admin)}" /></f:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modify(admin)}" /></h:form>
 					</h:column>
 					<h:column>
-						<f:form><h:commandLink value="Delete" action="#{userController.delete(admin)}" /></f:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.delete(admin)}" /></h:form>
 					</h:column>
 				</h:dataTable>
 			</div>
