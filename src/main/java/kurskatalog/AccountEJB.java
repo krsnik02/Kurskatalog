@@ -12,20 +12,13 @@ public class AccountEJB
     @PersistenceContext(unitName = "KurskatalogPU")
     private EntityManager em;
 
-    public Account register( Account account )
+    public Account login( Credentials cred )
     {
-	em.persist( account );
-	return account;
-    }
-
-    public Account login( Account account )
-    {
+	Account account;
 	try
 	{
-            account = em.createQuery( "SELECT a FROM Account a WHERE a.username = :user AND a.password = :pass", Account.class )
-                        .setParameter( "user", account.getUsername() )
-	                .setParameter( "pass", account.getHashedPassword() )
-	                .getSingleResult();
+            account = em.createQuery( "SELECT a FROM Account a WHERE a.credentials = :cred", Account.class )
+                        .setParameter( "cred", cred ).getSingleResult();
 	}
 	catch ( NoResultException nr )
 	{

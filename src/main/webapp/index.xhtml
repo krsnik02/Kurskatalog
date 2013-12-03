@@ -13,14 +13,13 @@
 		<h1>Kurskatalog Main Page</h1>		
 		<c:choose>
 			<c:when test="#{accountController.loggedIn}">
-				<p>Welcome <h:outputText value="#{accountController.account.username}" />!</p>
+				<p>Welcome <h:outputText value="#{accountController.account.firstName}" /> <h:outputText value="#{accountController.account.lastName}" />!</p>
 				<p><h:form><h:commandLink value="Logout" action="#{accountController.logout}" /></h:form></p>
 				<p><h:link outcome="list-users.xhtml" value="Users" /></p>
 			</c:when>
 			
 			<c:otherwise>
 				<p><h:link outcome="login.xhtml" value="Login" /></p>
-				<p><h:link outcome="register.xhtml" value="Register" /></p>
 			</c:otherwise>
 		</c:choose>
 	</h:body>

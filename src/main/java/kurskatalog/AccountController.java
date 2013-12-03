@@ -8,47 +8,48 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class AccountController
 {
-    private Account account = new Account();
-    private boolean loggedIn = false;
+    private Credentials credentials = new Credentials();
+    private Account account = null;
 
     @EJB
     private AccountEJB accountEJB;
     
-    public String register()
-    {
-	account = accountEJB.register( account );
-	loggedIn = true;
-	return "index.xhtml";
-    }
-    
     public String login()
     {
-	account = accountEJB.login( account );	
-	if ( account == null )
+	account = accountEJB.login( credentials );
+        if ( account != null )
 	{
-	    account = new Account();
-	    loggedIn = false;
+		credentials = null;	
 	}
-	else
-	{
-	    loggedIn = true;
-	}
-
 	return "index.xhtml";
     }
-
 
     public String logout()
     {
-        account = new Account();
-        loggedIn = false;
+        account = null;
+	credentials = new Credentials();
         return "index.xhtml";
     }
 
       
     public void setAccount( Account acct ) { account = acct; }
     public Account getAccount() { return account; }
+
+    public void setCredentials( Credentials cred ) 
+    { 
+        if ( account != null )
+            account.setCredentials( cred );
+        else
+            credentials = cred;
+    }
+
+    public Credentials getCredentials() 
+    {
+        if ( account != null )
+            return account.getCredentials();
+        else
+            return credentials;
+    }
     
-    public void setLoggedIn( boolean value ) { loggedIn = value; }
-    public boolean isLoggedIn() { return loggedIn; }
+    public boolean isLoggedIn() { return account != null; }
 }
