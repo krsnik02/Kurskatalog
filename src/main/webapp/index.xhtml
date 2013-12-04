@@ -7,10 +7,5 @@
 	</h:head>
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
-		<c:if test="#{loginController.loggedIn}">
-			<p><h:link outcome="list-students.xhtml" value="Students" /></p>
-			<p><h:link outcome="list-professors.xhtml" value="Professors" /></p>
-			<p><h:link outcome="list-administrators.xhtml" value="Administrators" /></p>
-		</c:if>
 	</h:body>
 </html>
