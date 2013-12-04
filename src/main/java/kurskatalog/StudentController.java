@@ -18,21 +18,21 @@ public class StudentController
     @PostConstruct
     public void initialize()
     {
-        students = accountEJB.getAllStudents();
+        students = accountEJB.listStudents();
     }
 
     public String updateStudent()
     {
 	students = null;
-	accountEJB.mergeAccount( student );
-	students = accountEJB.getAllStudents();
+	accountEJB.updateAccount( student );
+	students = accountEJB.listStudents();
         return "list-students.xhtml";
     }
 
     public String createStudent()
     {
         accountEJB.persistAccount( student );
-	students = accountEJB.getAllStudents();
+	students = accountEJB.listStudents();
 	return "list-students.xhtml";
     }
 
@@ -45,8 +45,8 @@ public class StudentController
     public String deleteStudent( Student stud )
     {
 	students = null;
-	accountEJB.removeAccount( stud );
-	students = accountEJB.getAllStudents();
+	accountEJB.deleteAccount( stud );
+	students = accountEJB.listStudents();
         return "list-students.xhtml";
     }
 

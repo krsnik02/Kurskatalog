@@ -18,21 +18,21 @@ public class ProfessorController
     @PostConstruct
     public void initialize()
     {
-        professors = accountEJB.getAllProfessors();
+        professors = accountEJB.listProfessors();
     }
 
     public String updateProfessor()
     {
         professors = null;
-        accountEJB.mergeAccount( professor );
-        professors = accountEJB.getAllProfessors();
+        accountEJB.updateAccount( professor );
+        professors = accountEJB.listProfessors();
         return "list-professors.xhtml";
     }
 
     public String createProfessor()
     {
         accountEJB.persistAccount( professor );
-        professors = accountEJB.getAllProfessors();
+        professors = accountEJB.listProfessors();
         return "list-professors.xhtml";
     }
 
@@ -45,8 +45,8 @@ public class ProfessorController
     public String deleteProfessor( Professor prof )
     {
         professors = null;
-        accountEJB.removeAccount( prof );
-        professors = accountEJB.getAllProfessors();
+        accountEJB.deleteAccount( prof );
+        professors = accountEJB.listProfessors();
         return "list-professors.xhtml";
     }
 
