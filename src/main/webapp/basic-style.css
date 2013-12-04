@@ -1,0 +1,7 @@
+#navigation ul ul {
+	display : none;
+}
+
+#navigation ul li:hover ul {
+	display : block;
+}
