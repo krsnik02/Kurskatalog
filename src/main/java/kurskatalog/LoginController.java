@@ -52,4 +52,7 @@ public class LoginController
     }
     
     public boolean isLoggedIn() { return account != null; }
+    public boolean isStudent() { return account != null && account instanceof Student; }
+    public boolean isProfessor() { return account != null && account instanceof Professor; }
+    public boolean isAdministrator() { return account != null && account instanceof Administrator; }
 }
