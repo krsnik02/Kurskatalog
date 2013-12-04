@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kurskatalog - Professors</title>
+	</h:head>
+	<h:body>
+		<ui:include src="WEB-INF/header.xhtml" />
+		<h2>Professors</h2>
+		<h:dataTable id="students" value="#{userController.listProfessors()}" var="prof" border="1">
+			<h:column>
+				<f:facet name="header"><h:outputText value="First Name" /></f:facet>
+				<h:outputText value="#{prof.firstName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
+				<h:outputText value="#{prof.lastName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Username" /></f:facet>
+				<h:outputText value="#{prof.credentials.username}" />
+			</h:column>
+			<h:column>
+				<h:form><h:commandLink value="Modify" action="#{userController.modifyProfessor(prof)}" /></h:form>
+			</h:column>
+			<h:column>
+				<h:form><h:commandLink value="Delete" action="#{userController.deleteProfessor(prof)}" /></h:form>
+			</h:column>
+		</h:dataTable>
+		<p><h:link outcome="create-professor.xhtml" value="Create Professor" /></p>
+	</h:body>
+</html>

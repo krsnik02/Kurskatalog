@@ -33,21 +33,21 @@ public class UserController
     {
 	accountEJB.persistAccount( student );
 	student = new Student();
-        return "list-users.xhtml#tab-students";
+        return "list-students.xhtml";
     }
 
     public String persistProfessor()
     {
 	accountEJB.persistAccount( professor );
 	professor = new Professor();
-        return "list-users.xhtml#tab-professors";
+        return "list-professors.xhtml";
     }
 
     public String persistAdministrator() 
     {
 	accountEJB.persistAccount( administrator );
 	administrator = new Administrator();
-        return "list-users.xhtml#tab-administrators";
+        return "list-administrators.xhtml";
     }
 
 
@@ -74,28 +74,40 @@ public class UserController
     {
         accountEJB.updateAccount( student );
         student = new Student();
-        return "list-users.xhtml#tab-students";
+        return "list-students.xhtml";
     }
 
     public String updateProfessor()
     {
         accountEJB.updateAccount( professor );
         professor = new Professor();
-        return "list-users.xhtml#tab-professors";
+        return "list-professors.xhtml";
     }
 
     public String updateAdministrator()
     {
         accountEJB.updateAccount( administrator );
         administrator = new Administrator();
-        return "list-users.xhtml#tab-administrators";
+        return "list-administrators.xhtml";
     }
 
 
 
-    public String deleteAccount( Account acct )
+    public String deleteStudent( Student stud )
     {
-        accountEJB.deleteAccount( acct );
-        return "list-users.xhtml";
+        accountEJB.deleteAccount( stud );
+        return "list-students.xhtml";
+    }
+
+    public String deleteProfessor( Professor prof )
+    {
+        accountEJB.deleteAccount( prof );
+        return "list-professors.xhtml";
+    }
+
+    public String deleteAdministrator( Administrator admin )
+    {
+        accountEJB.deleteAccount( admin );
+        return "list-administrators.xhtml";
     }
 };
