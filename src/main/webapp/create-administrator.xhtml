@@ -3,23 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" lang="en" xml:lang="en">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<title>Kurskatalog - Add Student</title>
+		<title>Kurskatalog - Add Administrator</title>
 	</h:head>
 	<h:body>
 		<h1><h:link outcome="index.html" value="Kurskatalog" /></h1>
-		<h2>Add Student</h2>
-		<h:form id="new-student" prependId="false">
+		<h2>Add Administrator</h2>
+		<h:form id="new-administrator" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="First Name : " />
-				<h:inputText id="firstName" value="#{userController.student.firstName}" />
+				<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
 				<h:outputLabel value="Last Name : " />
-				<h:inputText id="lastName" value="#{userController.student.lastName}" />
+				<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
 				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{userController.student.credentials.username}" />
+				<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
 				<h:outputLabel value="Password : " />
-				<h:inputSecret id="password" value="#{userController.student.credentials.plaintextPassword}" />
+				<h:inputSecret id="password" value="#{userController.administrator.credentials.plaintextPassword}" />
 			</h:panelGrid>
-			<h:commandButton value="Create" action="#{userController.persistStudent()}" />
+			<h:commandButton value="Create" action="#{userController.persistAdministrator()}" />
 		</h:form>
 	</h:body>
 </html>

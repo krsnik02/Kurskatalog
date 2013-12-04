@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" lang="en" xml:lang="en">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kurskatalog - Modify Administrator</title>
+	</h:head>
+	<h:body>
+		<h1><h:link outcome="index.xhtml" value="Kurskatalog" /></h1>
+		<h2>Modify Administrator</h2>
+		<h:form id="modify-administrator" prependId="false">
+			<h:inputHidden id="id" value="#{userController.administrator.id}" />
+			<h:inputHidden id="password" value="#{userController.administrator.credentials.hashedPassword}" />
+			<h:panelGrid columns="2">
+				<h:outputLabel value="First Name : " />
+				<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
+				<h:outputLabel value="Last Name : " />
+				<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
+				<h:outputLabel value="Username : " />
+				<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
+			</h:panelGrid>
+			<h:commandButton value="Modify" action="#{userController.updateAdministrator()}" />
+		</h:form>
+	</h:body>
+</html>

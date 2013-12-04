@@ -43,7 +43,7 @@ public class UserController
         return "list-users.xhtml#tab-professors";
     }
 
-    public String persistAdmininstrator() 
+    public String persistAdministrator() 
     {
 	accountEJB.persistAccount( administrator );
 	administrator = new Administrator();
