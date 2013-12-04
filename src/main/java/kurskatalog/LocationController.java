@@ -52,7 +52,7 @@ public class LocationController {
         return "modify-location.xhtml";
     }
 
-    public String deleteStudent( Location loc )
+    public String deleteLocation( Location loc )
     {
 	locations = null;
 	locationEJB.remove( loc );
@@ -63,8 +63,8 @@ public class LocationController {
     public void setLocation( Location loc ) { location = loc; }
     public Location getLocation() { return location; }
 
-    public void setStudentsList( List<Location> locs ) { locations = locs; }
-    public List<Location> getStudentsList() { return locations; }
+    public void setLocationsList( List<Location> locs ) { locations = locs; }
+    public List<Location> getLocationsList() { return locations; }
     
     
 }
