@@ -33,7 +33,7 @@ public class AccountEJB
 	em.persist( acct );
     }
 
-    public void mergeAccount( Account acct )
+    public void updateAccount( Account acct )
     {
         em.merge( acct );
     }

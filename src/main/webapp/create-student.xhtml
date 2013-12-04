@@ -11,15 +11,15 @@
 		<h:form id="new-student" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="First Name : " />
-				<h:inputText id="firstName" value="#{studentController.student.firstName}" />
+				<h:inputText id="firstName" value="#{userController.student.firstName}" />
 				<h:outputLabel value="Last Name : " />
-				<h:inputText id="lastName" value="#{studentController.student.lastName}" />
+				<h:inputText id="lastName" value="#{userController.student.lastName}" />
 				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{studentController.student.credentials.username}" />
+				<h:inputText id="username" value="#{userController.student.credentials.username}" />
 				<h:outputLabel value="Password : " />
-				<h:inputSecret id="password" value="#{studentController.student.credentials.plaintextPassword}" />
+				<h:inputSecret id="password" value="#{userController.student.credentials.plaintextPassword}" />
 			</h:panelGrid>
-			<h:commandButton value="Create" action="#{studentController.createStudent}" />
+			<h:commandButton value="Create" action="#{userController.persistStudent()}" />
 		</h:form>
 	</h:body>
 </html>

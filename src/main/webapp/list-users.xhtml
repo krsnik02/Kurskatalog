@@ -42,12 +42,13 @@
 						<h:outputText value="#{stud.credentials.username}" />
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Modify" action="#{userController.modify(stud)}" /></h:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modifyStudent(stud)}" /></h:form>
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Delete" action="#{userController.delete(stud)}" /></h:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.deleteAccount(stud)}" /></h:form>
 					</h:column>
 				</h:dataTable>
+				<p><h:link outcome="create-student.xhtml" value="Create Student" /></p>
 			</div>
 
 			<!-- List of all professors -->
@@ -66,12 +67,13 @@
 						<h:outputText value="#{prof.credentials.username}" />
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Modify" action="#{userController.modify(prof)}" /></h:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modifyProfessor(prof)}" /></h:form>
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Delete" action="#{userController.delete(prof)}" /></h:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.deleteAccount(prof)}" /></h:form>
 					</h:column>
 				</h:dataTable>
+				<p><h:link outcome="create-professor.xhtml" value="Create Professor" /></p>
 			</div>
 
 			<!-- List of all administrators -->
@@ -90,14 +92,14 @@
 						<h:outputText value="#{admin.credentails.username}" />
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Modify" action="#{userController.modify(admin)}" /></h:form>
+						<h:form><h:commandLink value="Modify" action="#{userController.modifyAdministrator(admin)}" /></h:form>
 					</h:column>
 					<h:column>
-						<h:form><h:commandLink value="Delete" action="#{userController.delete(admin)}" /></h:form>
+						<h:form><h:commandLink value="Delete" action="#{userController.deleteAccount(admin)}" /></h:form>
 					</h:column>
 				</h:dataTable>
+				<p><h:link outcome="create-administrator.xhtml" value="Create Administrator" /></p>
 			</div>
 		</div>
-		<p><h:link outcome="create-user.xhtml" value="New User" /></p>
 	</h:body>
 </html>
