@@ -33,9 +33,13 @@
 					<ul>
 						<li><h:link outcome="list-courses.xhtml" value="Catalog" /></li>
 						<li><h:link outcome="list-offerings.xhtml" value="Offerings" /></li>
+						<c:if test="#{loginController.student}">
+							<li><h:link outcome="register.xhtml" value="Register" /></li>
+						</c:if>
 					</ul>
 				</li>
 				<c:if test="#{loginController.administrator}">
+					<li><h:link outcome="list-departments.xhtml" value="Departments" /></li>
 					<li><h:link outcome="#" value="Users" />
 						<ul>
 							<li><h:link outcome="list-students.xhtml" value="Students" /></li>
