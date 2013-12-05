@@ -7,7 +7,7 @@ package kurskatalog;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,8 +24,8 @@ public class Department {
     private String name;
     private String code;
     
-    @OneToOne
-    private Professor headId;
+    @ManyToOne
+    private Professor head;
     
     public Department(){}
     
@@ -39,6 +39,6 @@ public class Department {
     public String getCode() { return code; }
     public void setCode( String code_){ code = code_; }
     
-    public Professor getHeadId(){ return headId; }
-    public void setHeadId( Professor headId_ ){ headId = headId_; }
+    public Professor getHead(){ return head; }
+    public void setHead( Professor head_ ){ head = head_; }
 }
