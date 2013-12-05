@@ -10,5 +10,5 @@ package kurskatalog;
  */
 public enum CourseType
 {
-    LEC, SEM, STU
+    LEC, LAB, SEM, STU
 }

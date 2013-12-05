@@ -17,6 +17,12 @@ public class CourseController
 
     public List<Course> listCourses() { return courseEJB.listCourses(); }
 
+    public CourseType[] getCourseTypes() 
+    {
+        CourseType[] types = { CourseType.LEC, CourseType.LAB, CourseType.SEM, CourseType.STU };
+        return types;
+    }
+
 
     public String persistCourse()
     {
