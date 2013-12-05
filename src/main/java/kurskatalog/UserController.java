@@ -10,9 +10,9 @@ public class UserController
     @EJB
     private AccountEJB accountEJB;
 
-    Student student = new Student();
-    Professor professor = new Professor();
-    Administrator administrator = new Administrator();
+    private Student student = new Student();
+    private Professor professor = new Professor();
+    private Administrator administrator = new Administrator();
 
     public Student getStudent() { return student; }
     public void setStudent( Student stud ) { student = stud; }
