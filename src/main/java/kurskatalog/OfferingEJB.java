@@ -15,30 +15,28 @@ import javax.persistence.PersistenceContext;
  */
 
 @Stateless
-public class LocationEJB {
+public class OfferingEJB {
     
     @PersistenceContext(unitName = "KurskatalogPU")
     private EntityManager em;
-
     
-    public void persist( Location loc )
+    public void persistOffering( OfferingMetadata offer )
     {
-	em.persist( loc );
+	em.persist( offer );
     }
 
-    public void merge( Location loc )
+    public void updateOffering( OfferingMetadata offer )
     {
-        em.merge( loc );
+        em.merge( offer );
     }
 
-    public void remove( Location loc )
+    public void deleteOffering( OfferingMetadata offer )
     {
-        em.remove( em.merge( loc ) );
+        em.remove( em.merge( offer ) );
     }
     
-    public List<Location> getAllLocations()
+    public List<OfferingMetadata> listOfferings()
     {
-        return em.createQuery( "SELECT l FROM Location l", Location.class ).getResultList();
+        return em.createQuery( "SELECT s FROM OfferingMetadata s", OfferingMetadata.class ).getResultList();
     }
-
 }
