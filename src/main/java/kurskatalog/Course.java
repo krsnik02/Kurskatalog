@@ -33,7 +33,10 @@ public class Course {
     private int code;
     private CourseType type;
     
-    public Course(){}
+    public Course() 
+    {
+        department = new Department();
+    }
     
     public long getId(){ return id; }
     public void setId( long id_ ) { id = id_; }

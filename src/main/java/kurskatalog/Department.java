@@ -27,11 +27,14 @@ public class Department {
     @ManyToOne
     private Professor head;
     
-    public Department(){}
+    public Department() 
+    {
+        head = new Professor();
+    }
     
         
-    public long getID(){ return id; }
-    public void setID( long id_ ) { id = id_; }
+    public long getId() { return id; }
+    public void setId( long id_ ) { id = id_; }
     
     public String getName() { return name; }
     public void setName( String name_){ name = name_; }

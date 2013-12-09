@@ -12,8 +12,8 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Department : " />
-				<h:selectOneMenu value="#{courseController.course.department}">
-					<f:selectItems value="#{departmentController.listDepartments()}" var="dept" itemLabel="#{dept.name}" itemValue="#{dept}" />
+				<h:selectOneMenu value="#{courseController.course.department.id}">
+					<f:selectItems value="#{departmentController.listDepartments()}" var="dept" itemLabel="#{dept.name}" itemValue="#{dept.id}" />
 				</h:selectOneMenu>
 				<h:outputLabel value="Course Code : " />
 				<h:inputText value="#{courseController.course.code}" />
