@@ -1,7 +1,121 @@
-#navigation ul ul {
-	display : none;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
 }
 
-#navigation ul li:hover ul {
-	display : block;
+blockquote, q {
+    quotes:none;
 }
+
+body {
+    line-height:1;
+}
+
+ol, ul {
+    list-style:none;
+}
+
+:focus {
+    outline:0;
+}
+
+ins {
+    text-decoration:none;
+}
+
+del {
+    text-decoration:line-through;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+html, body {
+    min-height:100%;
+}
+
+body {
+    background-color:#fff;
+    width:100%;
+    min-width:1300px;
+}
+
+q {
+    quotes:"\201c""\201d""\2018""\2019";
+}
+
+/* Header */
+
+#header {
+    width : 100%;
+    background : #777;
+}
+
+#title {
+    width : auto;
+    font-size : 2.5em;
+    padding : 0.2em;
+    position : relative;
+    float : left;
+}
+
+#account {
+    width : auto;
+    font-size : 1em;
+    padding : 1.25em;
+    position : relative;
+    float : right;
+}
+
+#nav {
+    width : 100%;
+    clear : both;
+    background : #aaa;
+}
+
+#nav:after {
+    content : "";
+    clear : both;
+    display : block;
+}
+
+#nav li {
+    width : auto;
+    font-size : 1em;
+    padding : 0.3em;
+    padding-left : 0.6em;
+    padding-right : 0.6em;
+    float : left;
+}
+
+#nav li:hover {
+    background : #888;
+}
+
+#nav ul ul {
+    position : absolute;
+    margin : 0.3em;
+    display : none;
+}
+
+#nav ul li:hover ul {
+    display : block;
+    background : #aaa;
+    margin-left : -0.6em
+}
+
+#nav ul ul li {
+    float : none;
+}
+
+#nav ul li:hover ul li:hover {
+    background: #888;
+}
+
