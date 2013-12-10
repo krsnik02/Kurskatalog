@@ -13,7 +13,7 @@ public class Professor extends Account
     @OneToMany(cascade=CascadeType.ALL)
     private List<Offering> courseLoad;
     
-    @OneToOne
+    @OneToOne(mappedBy="head")
     private Department headOf;
     
     public Professor() {}

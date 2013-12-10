@@ -37,31 +37,32 @@
 			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
 		</h:form>
 		<c:if test="#{loginController.professor}">
+		    <h3>
 		    <f:facet name="header"><h:outputText value="Code" /></f:facet>
-		    <h:outputText value="#{loginController.returnProfessor.headOf.name}" />
+		    <h:outputText value="#{loginController.accountAsProfessor.headOf.name}" />
 		</c:if>
 		<c:if test="#{loginController.student or loginController.professor}">
 			<h3>Courses</h3>
-			<h:dataTable value="#{account.listCourses()}" var="course" border="1">
+			<h:dataTable value="#{loginController.account.listCourses()}" var="offer" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
-				<h:outputText value="#{course.department.code} #{course.code}" />
+				<h:outputText value="#{offer.course.department.code} #{offer.course.code} #{offer.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Name" /></f:facet>
-				<h:outputText value="#{course.name}" />
+				<h:outputText value="#{offer.course.name}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Type" /></f:facet>
-				<h:outputText value="#{course.type}" />
+				<h:outputText value="#{offer.course.type}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Description" /></f:facet>
-				<h:outputText value="#{course.description}" />
+				<h:outputText value="#{offer.course.description}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
-				<h:outputText value="#{course.prerequisites}" />
+				<h:outputText value="#{offer.course.prerequisites}" />
 			</h:column>
 		</h:dataTable>
 		</c:if>
