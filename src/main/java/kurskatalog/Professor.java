@@ -5,6 +5,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
 
 @Entity
 public class Professor extends Account
@@ -13,8 +14,8 @@ public class Professor extends Account
     @OneToMany(cascade=CascadeType.ALL)
     private List<Offering> courseLoad;
     
-    @OneToOne(mappedBy="head")
-    private Department headOf;
+    @OneToMany(mappedBy="head", fetch=FetchType.EAGER)
+    private List<Department> headOf;
     
     public Professor() {}
     
@@ -23,11 +24,11 @@ public class Professor extends Account
 	return courseLoad;
     }
     
-    public Department getHeadOf(){
+    public List<Department> getHeadOf(){
 	return headOf;
     }
     
-    public void setHeadOf(Department dept){
+    public void setHeadOf(List<Department> dept){
 	headOf = dept;
     }
 };

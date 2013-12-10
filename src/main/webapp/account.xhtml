@@ -37,9 +37,9 @@
 			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
 		</h:form>
 		<c:if test="#{loginController.professor}">
-		    <h3>
-		    <f:facet name="header"><h:outputText value="Code" /></f:facet>
-		    <h:outputText value="#{loginController.accountAsProfessor.headOf.name}" />
+		    <h3>Departments</h3>
+		    <h:outputText value="You are the head of the following departments: " />
+		    <h:outputText value="#{loginController.accountAsProfessor.headOf}" />
 		</c:if>
 		<c:if test="#{loginController.student or loginController.professor}">
 			<h3>Courses</h3>
