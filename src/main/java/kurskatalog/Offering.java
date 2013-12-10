@@ -33,8 +33,8 @@ public class Offering {
     public long getId() { return id; }
     public void setId( long id_ ) { id = id_; }
     
-    public Course getCourseId() { return courseId; }
-    public void setCourseId( Course courseId_ ) { courseId = courseId_; };
+    public Course getCourse() { return course; }
+    public void setCourse( Course course_ ) { course = course_; };
 
     public String getSemester() { return semester; }
     public void setSemester( String semester_ ) { semester = semester_; }

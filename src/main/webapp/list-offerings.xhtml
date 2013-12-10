@@ -40,6 +40,30 @@
 				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
 				<h:outputText value="#{offering.professor.lastName}" />
 			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
+				<h:outputText value="#{offering.time.startTime}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="End Time" /></f:facet>
+				<h:outputText value="#{offering.time.endTime}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Days Meeting" /></f:facet>
+				<h:outputText value="#{offering.time.daysMeeting}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Semester" /></f:facet>
+				<h:outputText value="#{offering.offering.semester}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Class Section" /></f:facet>
+				<h:outputText value="#{offering.offering.classSection}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="seats" /></f:facet>
+				<h:outputText value="#{offering.offering.seats}" />
+			</h:column>
 			<c:if test="#{loginController.administrator}">
 				<h:column>
 					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOfferingMetadata(offering)}" /></h:form>
