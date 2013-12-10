@@ -13,6 +13,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Departments</h2>
+		<div class="listing">
 		<h:dataTable value="#{departmentController.listDepartments()}" var="dept" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
@@ -41,5 +42,6 @@
 		<c:if test="#{loginController.administrator}">
 			<p><h:link outcome="create-department.xhtml" value="Create Department" /></p>
 		</c:if>
+		</div>
 	</h:body>
 </html>

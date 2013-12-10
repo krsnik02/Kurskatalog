@@ -14,6 +14,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Students</h2>
+		<div class="listing">
 		<h:dataTable id="students" value="#{userController.listStudents()}" var="stud" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="First Name" /></f:facet>
@@ -35,5 +36,6 @@
 			</h:column>
 		</h:dataTable>
 		<p><h:link outcome="create-student.xhtml" value="Create Student" /></p>
+		</div>
 	</h:body>
 </html>

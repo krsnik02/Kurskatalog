@@ -12,6 +12,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Student</h2>
+		<div class ="create">
 		<h:form id="new-student" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="First Name : " />
@@ -24,6 +25,7 @@
 				<h:inputSecret id="password" value="#{userController.student.credentials.plaintextPassword}" />
 			</h:panelGrid>
 			<h:commandButton value="Create" action="#{userController.persistStudent()}" />
+		</div>
 		</h:form>
 	</h:body>
 </html>

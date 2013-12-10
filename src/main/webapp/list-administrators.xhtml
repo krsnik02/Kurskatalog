@@ -14,6 +14,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Administrators</h2>
+		<div class="listing">
 		<h:dataTable value="#{userController.listAdministrators()}" var="admin" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="First Name" /></f:facet>
@@ -35,5 +36,6 @@
 			</h:column>
 		</h:dataTable>
 		<p><h:link outcome="create-administrator.xhtml" value="Create Administrator" /></p>
+		</div>
 	</h:body>
 </html>

@@ -21,8 +21,8 @@
 				<f:ajax execute="@form" render=":courselist" />
 			</h:commandLink>
 		</h:form>
-
-		<h:dataTable id="courselist" value="#{courseController.listCourses()}" var="course" border="1">
+		<div class="listing">
+		    <h:dataTable id="courselist" value="#{courseController.listCourses()}" var="course" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
 				<h:outputFormat value="{0} {1}">
@@ -64,5 +64,6 @@
 		<c:if test="#{loginController.administrator}">
 			<p><h:link outcome="create-course.xhtml" value="Create Course" /></p>
 		</c:if>
+		</div>
 	</h:body>
 </html>
