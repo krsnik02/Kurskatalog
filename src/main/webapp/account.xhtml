@@ -49,11 +49,22 @@
 			<h:dataTable value="#{loginController.account.listCourses()}" var="offer" border="1">
 				<h:column>
 					<f:facet name="header"><h:outputText value="Code" /></f:facet>
-					<h:outputFormat value="{0} {1} {2}">
-						<f:param value="#{offer.course.department.code}" />
+					<c:if test="#{loginController.professor}">
+						<h:form><h:commandLink action="#{offeringController.listRegistered(offer)}">
+							<h:outputFormat value="{0} {1} {2}">
+								<f:param value="#{offer.course.department.code}" />
+								<f:param value="#{offer.course.code}" />
+								<f:param value="#{offer.section}" />
+							</h:outputFormat>
+						</h:commandLink></h:form>
+					</c:if>
+					<c:if test="#{loginController.student}">
+						<h:outputFormat value="{0} {1} {2}">
+							<f:param value="#{offer.course.department.code}" />
 							<f:param value="#{offer.course.code}" />
-						<f:param value="#{offer.section}" />
-					</h:outputFormat>
+							<f:param value="#{offer.section}" />
+						</h:outputFormat>
+					</c:if>
 				</h:column>
 				<h:column>
 					<f:facet name="header"><h:outputText value="Name" /></f:facet>

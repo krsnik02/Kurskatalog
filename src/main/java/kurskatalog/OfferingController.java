@@ -65,6 +65,14 @@ public class OfferingController {
         return "list-offerings.xhtml";
     }
 
+
+    public String listRegistered( Offering offer )
+    {
+        offering = offer;
+        return "registered-students.xhtml";
+    }
+
+
     public String register( Student stud, Offering offer )
     {
         stud.listCourses().add( offer );
