@@ -29,11 +29,9 @@ public class OfferingController {
                              DayOfWeek.THURSDAY, DayOfWeek.FRIDAY };
         return days;
     }
-
  
     public List<Offering> listOfferings() { return offeringEJB.listOfferings(); }
     public List<Location> listLocations() { return offeringEJB.listLocations(); }
-
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) { offering = offering_; }
