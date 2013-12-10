@@ -32,6 +32,10 @@ public class OfferingController {
 	return offeringEJB.listProfessors();
     }
     
+    public List<OfferingMetadata> listOfferings(){
+	return offeringEJB.listOfferings();
+    }
+    
     public OfferingController() { offeringMetadata.setOffering(offering); }
 
     public Offering getOffering() { return offering; }
