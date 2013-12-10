@@ -33,7 +33,6 @@ public class OfferingController {
     }
     
     public OfferingController() { offeringMetadata.setOffering(offering); }
-    
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) {
@@ -68,7 +67,7 @@ public class OfferingController {
         return "list-OfferingMetadata.xhtml";
     }
     
-    public String deleteStudent( OfferingMetadata offeringM )
+    public String deleteOfferingMetadata( OfferingMetadata offeringM )
     {
         offeringEJB.deleteOffering( offeringM );
         return "list-OfferingMetadata.xhtml";
