@@ -13,6 +13,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Department</h2>
+		<div class="modify">
 		<h:form id="modify-dept" prependId="false">
 			<h:inputHidden value="#{departmentController.department.id}" />
 			<h:panelGrid columns="2">
@@ -28,5 +29,6 @@
 			</h:panelGrid>
 			<h:commandButton value="Modify" action="#{departmentController.updateDepartment()}" />
 		</h:form>
+		</div>
 	</h:body>
 </html>

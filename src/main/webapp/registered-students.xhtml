@@ -18,6 +18,7 @@
 			<f:param value="#{offeringController.offering.course.code}" />
 			<f:param value="#{offeringController.offering.course.name}" />
 		</h:outputFormat></h2>
+		<div class="listing">
 		<h:dataTable id="students" value="#{offeringController.offering.registeredStudents}" var="stud" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="First Name" /></f:facet>
@@ -28,5 +29,6 @@
 				<h:outputText value="#{stud.lastName}" />
 			</h:column>
 		</h:dataTable>
+		</div>
 	</h:body>
 </html>

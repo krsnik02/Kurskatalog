@@ -19,6 +19,7 @@
 		</h:outputFormat></h2>
 
 		<h3>Modify Account</h3>
+		<div class="modify">
 		<h:form>
 			<h:inputHidden value="#{loginController.account.id}" />
 			<h:inputHidden value="#{loginController.credentials.username}" />
@@ -36,8 +37,11 @@
 			</h:panelGrid>
 			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
 		</h:form>
+		</div>
+		<div class="listing">
 		<c:if test="#{loginController.professor}">
 		    	<h3>Departments</h3>
+
 		    	<h:outputText value="You are the head of the following departments: " />
 		    	<ui:repeat var="dept" value="#{loginController.accountAsProfessor.headOf}" varStatus="status">
 		    		<h:outputText value="#{dept.name}" />
@@ -116,5 +120,6 @@
 				<p><h:link outcome="list-offerings.xhtml" value="Register" /></p>
 			</c:if>
 		</c:if>
+		</div>
 	</h:body>
 </html>

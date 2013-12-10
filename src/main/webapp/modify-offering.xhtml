@@ -13,6 +13,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Course</h2>
+		<div class="modify">
 		<h:form id="modify-course" prependId="false">
 			<h:inputHidden value="#{offeringController.offering.id}" />
 			<h:panelGrid columns="2">
@@ -53,5 +54,6 @@
 			</h:panelGrid>
 			<h:commandButton value="Modify" action="#{offeringController.updateOffering()}" />
 		</h:form>
+		</div>
 	</h:body>
 </html>

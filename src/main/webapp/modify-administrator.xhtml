@@ -12,6 +12,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Administrator</h2>
+		<div class="modify">
 		<h:form id="modify-administrator" prependId="false">
 			<h:inputHidden id="id" value="#{userController.administrator.id}" />
 			<h:inputHidden id="password" value="#{userController.administrator.credentials.hashedPassword}" />
@@ -25,5 +26,6 @@
 			</h:panelGrid>
 			<h:commandButton value="Modify" action="#{userController.updateAdministrator()}" />
 		</h:form>
+		</div>
 	</h:body>
 </html>

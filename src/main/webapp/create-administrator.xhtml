@@ -12,6 +12,7 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Administrator</h2>
+		<div class="create">
 		<h:form id="new-administrator" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="First Name : " />
@@ -25,5 +26,6 @@
 			</h:panelGrid>
 			<h:commandButton value="Create" action="#{userController.persistAdministrator()}" />
 		</h:form>
+		</div>
 	</h:body>
 </html>
