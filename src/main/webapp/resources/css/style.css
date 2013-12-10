@@ -207,10 +207,13 @@ h3 {
     margin-right : auto;
 }
 
-#create .button, #modify .button, #search .button {
-    display : inline-block;
+#create .button, #modify .button {
+    display : table;
     margin-top : 0.3em;
+    margin-left : auto;
+    margin-right : auto;
 }
+
 
 #departments {
     display : table;
@@ -223,6 +226,12 @@ h3 {
     float : left;
 }
 
+#search {
+    display : table;
+}
+
 #search .button {
+    display : table-cell;
     float : left;
+    vertical-align : middle;
 }
