@@ -21,6 +21,7 @@ public class LoginController
 	{
 	    credentials = new Credentials();
             credentials.setUsername( account.getCredentials().getUsername() );	
+	    return "account.xhtml";
 	}
 	return "index.xhtml";
     }
