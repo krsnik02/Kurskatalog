@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.NoResultException;
 import java.util.List;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class PersistenceEJB
@@ -67,6 +68,13 @@ public class PersistenceEJB
     public List<Department> listDepartments()
     {
         return em.createQuery( "SELECT d FROM Department d", Department.class ).getResultList();
+    }
+    
+    public List<Department> listHead(Professor prof)
+    {
+	TypedQuery<Department> query = em.createQuery( "SELECT d FROM Department d where d.head = ?1", Department.class );
+	query.setParameter(1, prof.getId());
+	return query.getResultList();
     }
 
     public List<Offering> listOfferings()

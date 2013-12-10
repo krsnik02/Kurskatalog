@@ -70,4 +70,8 @@ public class LoginController
     public boolean isStudent() { return account != null && account instanceof Student; }
     public boolean isProfessor() { return account != null && account instanceof Professor; }
     public boolean isAdministrator() { return account != null && account instanceof Administrator; }
+    
+    public Professor returnProfessor(){ if (isProfessor()) return (Professor) account; else return null; }
+    public Student returnStudent(){ if (isStudent()) return (Student) account; else return null; }
+    public Administrator returnAdministrator(){ if (isAdministrator()) return (Administrator) account; else return null; }
 }
