@@ -60,6 +60,11 @@
 					<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offer)}" /></h:form>
 				</h:column>
 			</c:if>
+			<c:if test="#{loginController.student}">
+				<h:column>
+					<h:form><h:commandLink value="Register" action="#{userController.register(loginController.account, offer)}" /></h:form>
+				</h:column>
+			</c:if>
 		</h:dataTable>
 		<c:if test="#{loginController.administrator}">
 			<p><h:link outcome="create-offering.xhtml" value="Create Offering" /></p>
