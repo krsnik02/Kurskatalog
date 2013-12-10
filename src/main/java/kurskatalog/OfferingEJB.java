@@ -35,6 +35,8 @@ public class OfferingEJB {
         em.remove( em.merge( offer ) );
     }
     
+    
+    
     public List<Offering> listOfferings()
     {
         return em.createQuery( "SELECT o FROM Offering o", Offering.class ).getResultList();
