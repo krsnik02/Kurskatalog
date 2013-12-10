@@ -70,10 +70,10 @@
 				<c:if test="#{loginController.administrator}">
 					<h:column>
 						<h:form>
-							<h:commandLink action="#{userController.modifyOffering(offer)}">
+							<h:commandLink action="#{offeringController.modifyOffering(offer)}">
 								<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
 							</h:commandLink>
-							<h:commandLink action="#{userController.deleteOffering(offer)}">
+							<h:commandLink action="#{offeringController.deleteOffering(offer)}">
 								<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
 							</h:commandLink>
 						</h:form>

@@ -12,20 +12,20 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Professor</h2>
-		<div class ="create">
-		<h:form id="new-prof" prependId="false">
-			<h:panelGrid columns="2">
-				<h:outputLabel value="First Name : " />
-				<h:inputText id="firstName" value="#{userController.professor.firstName}" />
-				<h:outputLabel value="Last Name : " />
-				<h:inputText id="lastName" value="#{userController.professor.lastName}" />
-				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{userController.professor.credentials.username}" />
-				<h:outputLabel value="Password : " />
-				<h:inputSecret id="password" value="#{userController.professor.credentials.plaintextPassword}" />
-			</h:panelGrid>
-			<h:commandButton value="Create" action="#{userController.persistProfessor()}" />
-		</h:form>
+		<div id="create">
+			<h:form id="new-prof" prependId="false">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="First Name : " />
+					<h:inputText id="firstName" value="#{userController.professor.firstName}" />
+					<h:outputLabel value="Last Name : " />
+					<h:inputText id="lastName" value="#{userController.professor.lastName}" />
+					<h:outputLabel value="Username : " />
+					<h:inputText id="username" value="#{userController.professor.credentials.username}" />
+					<h:outputLabel value="Password : " />
+					<h:inputSecret id="password" value="#{userController.professor.credentials.plaintextPassword}" />
+				</h:panelGrid>
+				<h:commandLink class="button" value="Create" action="#{userController.persistProfessor()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

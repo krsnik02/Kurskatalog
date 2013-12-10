@@ -19,24 +19,20 @@
 		</h:outputFormat></h2>
 
 		<h3>Modify Account</h3>
-		<div class="modify">
-		<h:form>
-			<h:inputHidden value="#{loginController.account.id}" />
-			<h:inputHidden value="#{loginController.credentials.username}" />
-			<h:panelGrid columns="2">
-				<h:outputLabel value="First Name : " />
-				<h:inputText value="#{loginController.account.firstName}" />
-				<h:outputLabel value="Last Name : " />
-				<h:inputText value="#{loginController.account.lastName}" />
-				<h:outputLabel value="Username : " />
-				<h:inputText value="#{loginController.account.credentials.username}" />
-				<h:outputLabel value="Current Password : " />
-				<h:inputSecret value="#{loginController.credentials.plaintextPassword}" />
-				<h:outputLabel value="New Password : " />
-				<h:inputSecret value="#{loginController.account.credentials.plaintextPassword}" />
-			</h:panelGrid>
-			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
-		</h:form>
+		<div id="modify">
+			<h:form>
+				<h:inputHidden value="#{loginController.account.id}" />
+				<h:inputHidden value="#{loginController.credentials.username}" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Username : " />
+					<h:inputText value="#{loginController.account.credentials.username}" />
+					<h:outputLabel value="Current Password : " />
+					<h:inputSecret value="#{loginController.credentials.plaintextPassword}" />
+					<h:outputLabel value="New Password : " />
+					<h:inputSecret value="#{loginController.account.credentials.plaintextPassword}" />
+				</h:panelGrid>
+				<h:commandLink class="button" value="Modify" action="#{loginController.updateCredentials()}" />
+			</h:form>
 		</div>
 
 		<c:if test="#{loginController.professor}">

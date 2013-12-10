@@ -13,21 +13,21 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Department</h2>
-		<div class="create">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Name : " />
-				<h:inputText value="#{departmentController.department.name}" />
-				<h:outputLabel value="Code : " />
-				<h:inputText value="#{departmentController.department.code}" />
-				<h:outputText value="Head : " />
-				<h:selectOneMenu value="#{departmentController.department.head.id}">
-					<f:selectItems value="#{userController.listProfessors()}" var="prof" 
-						       itemLabel="#{prof.firstName} #{prof.lastName}" itemValue="#{prof.id}" />
-				</h:selectOneMenu>
-			</h:panelGrid>
-			<h:commandButton value="Create" action="#{departmentController.persistDepartment()}" />
-		</h:form>
+		<div id="create">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Name : " />
+					<h:inputText value="#{departmentController.department.name}" />
+					<h:outputLabel value="Code : " />
+					<h:inputText value="#{departmentController.department.code}" />
+					<h:outputText value="Head : " />
+					<h:selectOneMenu value="#{departmentController.department.head.id}">
+						<f:selectItems value="#{userController.listProfessors()}" var="prof" 
+							       itemLabel="#{prof.firstName} #{prof.lastName}" itemValue="#{prof.id}" />
+					</h:selectOneMenu>
+				</h:panelGrid>
+				<h:commandLink class="button" value="Create" action="#{departmentController.persistDepartment()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

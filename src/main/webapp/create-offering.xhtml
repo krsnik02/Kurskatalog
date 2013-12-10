@@ -13,46 +13,46 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Course Offering</h2>
-		<div class ="create">
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Course : " />
-				<h:selectOneMenu value="#{offeringController.offering.course.id}">
-					<f:selectItems value="#{courseController.listCourses()}" var="course" 
-                                                       itemLabel="#{course.name}" itemValue="#{course.id}" />
-				</h:selectOneMenu>
-				<h:outputLabel value="Semester : " />
-				<h:inputText value="#{offeringController.offering.semester}" />
-				<h:outputLabel value="Section : " />
-				<h:inputText value="#{offeringController.offering.section}" />
-				<h:outputLabel value="Seats : " />
-				<h:inputText value="#{offeringController.offering.seats}" />
-				<h:outputLabel value="Start Time : " />
-				<h:inputText value="#{offeringController.offering.startTime}">
-					<f:convertDateTime pattern="hh:mm a" type="time" />
-				</h:inputText>
-				<h:outputLabel value="Stop Time : " />
-				<h:inputText value="#{offeringController.offering.stopTime}">
-					<f:convertDateTime pattern="hh:mm a" type="time" />
-				</h:inputText>
-				<h:outputLabel value="Days of Week : " />
-				<h:selectManyCheckbox value="#{offeringController.offering.daysOfWeek}">
-					<f:selectItems value="#{offeringController.daysOfWeek}" var="day"
-                                                       itemLabel="#{day}" itemValue="#{day}" />
-				</h:selectManyCheckbox>
-				<h:outputLabel value="Professor : " />
-				<h:selectOneMenu value="#{offeringController.offering.professor.id}">
-					<f:selectItems value="#{userController.listProfessors()}" var="prof"
-                                                       itemLabel="#{prof.firstName} #{prof.lastName}" 
-                                                       itemValue="#{prof.id}" />
-				</h:selectOneMenu>
-				<h:outputLabel value="Building : " />
-				<h:inputText value="#{offeringController.offering.building}" />
-				<h:outputLabel value="Room : " />
-				<h:inputText value="#{offeringController.offering.room}" />
-			</h:panelGrid>
-			<h:commandButton value="Create" action="#{offeringController.persistOffering()}" />
-		</h:form>
+		<div id="create">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Course : " />
+					<h:selectOneMenu value="#{offeringController.offering.course.id}">
+						<f:selectItems value="#{courseController.courseList}" var="course" 
+                                             	               itemLabel="#{course.name}" itemValue="#{course.id}" />
+					</h:selectOneMenu>
+					<h:outputLabel value="Semester : " />
+					<h:inputText value="#{offeringController.offering.semester}" />
+					<h:outputLabel value="Section : " />
+					<h:inputText value="#{offeringController.offering.section}" />
+					<h:outputLabel value="Seats : " />
+					<h:inputText value="#{offeringController.offering.seats}" />
+					<h:outputLabel value="Start Time : " />
+					<h:inputText value="#{offeringController.offering.startTime}">
+						<f:convertDateTime pattern="hh:mm a" type="time" />
+					</h:inputText>
+					<h:outputLabel value="Stop Time : " />
+					<h:inputText value="#{offeringController.offering.stopTime}">
+						<f:convertDateTime pattern="hh:mm a" type="time" />
+					</h:inputText>
+					<h:outputLabel value="Days of Week : " />
+					<h:selectManyCheckbox value="#{offeringController.offering.daysOfWeek}">
+						<f:selectItems value="#{offeringController.daysOfWeek}" var="day"
+                                      	                       itemLabel="#{day}" itemValue="#{day}" />
+					</h:selectManyCheckbox>
+					<h:outputLabel value="Professor : " />
+					<h:selectOneMenu value="#{offeringController.offering.professor.id}">
+						<f:selectItems value="#{userController.listProfessors()}" var="prof"
+                                      	                       itemLabel="#{prof.firstName} #{prof.lastName}" 
+                                       	                       itemValue="#{prof.id}" />
+					</h:selectOneMenu>
+					<h:outputLabel value="Building : " />
+					<h:inputText value="#{offeringController.offering.building}" />
+					<h:outputLabel value="Room : " />
+					<h:inputText value="#{offeringController.offering.room}" />
+				</h:panelGrid>
+				<h:commandLink class="button" value="Create" action="#{offeringController.persistOffering()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

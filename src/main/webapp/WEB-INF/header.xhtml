@@ -15,7 +15,7 @@
 				<c:when test="#{loginController.loggedIn}">
 					<h:form>
 						<h:outputText value="#{loginController.account.firstName} #{loginController.account.lastName} (#{loginController.account.credentials.username})" />
-						<h:commandLink value="Logout" action="#{loginController.logout()}" />
+						<h:commandLink class="button" value="Logout" action="#{loginController.logout()}" />
 					</h:form>
 				</c:when>
 			
@@ -23,7 +23,7 @@
 					<h:form>
 						<h:inputText value="#{loginController.credentials.username}" />
 						<h:inputSecret value="#{loginController.credentials.plaintextPassword}" />
-						<h:commandLink value="Login" action="#{loginController.login()}" />
+						<h:commandLink class="button" value="Login" action="#{loginController.login()}" />
 					</h:form>
 				</c:otherwise>
 			</c:choose>

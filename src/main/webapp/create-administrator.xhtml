@@ -12,20 +12,20 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Add Administrator</h2>
-		<div class="create">
-		<h:form id="new-administrator" prependId="false">
-			<h:panelGrid columns="2">
-				<h:outputLabel value="First Name : " />
-				<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
-				<h:outputLabel value="Last Name : " />
-				<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
-				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
-				<h:outputLabel value="Password : " />
-				<h:inputSecret id="password" value="#{userController.administrator.credentials.plaintextPassword}" />
-			</h:panelGrid>
-			<h:commandButton value="Create" action="#{userController.persistAdministrator()}" />
-		</h:form>
+		<div id="create">
+			<h:form id="new-administrator" prependId="false">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="First Name : " />
+					<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
+					<h:outputLabel value="Last Name : " />
+					<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
+					<h:outputLabel value="Username : " />
+					<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
+					<h:outputLabel value="Password : " />
+					<h:inputSecret id="password" value="#{userController.administrator.credentials.plaintextPassword}" />
+				</h:panelGrid>
+				<h:commandLink class="button" value="Create" action="#{userController.persistAdministrator()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

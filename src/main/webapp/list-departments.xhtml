@@ -34,10 +34,10 @@
 				<c:if test="#{loginController.administrator}">
 					<h:column>
 						<h:form>
-							<h:commandLink action="#{userController.modifyDepartment(dept)}">
+							<h:commandLink action="#{departmentController.modifyDepartment(dept)}">
 								<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
 							</h:commandLink>
-							<h:commandLink action="#{userController.deleteDepartment(dept)}">
+							<h:commandLink action="#{departmentController.deleteDepartment(dept)}">
 								<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
 							</h:commandLink>
 						</h:form>

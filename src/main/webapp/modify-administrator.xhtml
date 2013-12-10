@@ -12,20 +12,20 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Administrator</h2>
-		<div class="modify">
-		<h:form id="modify-administrator" prependId="false">
-			<h:inputHidden id="id" value="#{userController.administrator.id}" />
-			<h:inputHidden id="password" value="#{userController.administrator.credentials.hashedPassword}" />
-			<h:panelGrid columns="2">
-				<h:outputLabel value="First Name : " />
-				<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
-				<h:outputLabel value="Last Name : " />
-				<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
-				<h:outputLabel value="Username : " />
-				<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
-			</h:panelGrid>
-			<h:commandButton value="Modify" action="#{userController.updateAdministrator()}" />
-		</h:form>
+		<div id="modify">
+			<h:form id="modify-administrator" prependId="false">
+				<h:inputHidden id="id" value="#{userController.administrator.id}" />
+				<h:inputHidden id="password" value="#{userController.administrator.credentials.hashedPassword}" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="First Name : " />
+					<h:inputText id="firstName" value="#{userController.administrator.firstName}" />
+					<h:outputLabel value="Last Name : " />
+					<h:inputText id="lastName" value="#{userController.administrator.lastName}" />
+					<h:outputLabel value="Username : " />
+					<h:inputText id="username" value="#{userController.administrator.credentials.username}" />
+				</h:panelGrid>
+				<h:commandLink class="button" value="Modify" action="#{userController.updateAdministrator()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

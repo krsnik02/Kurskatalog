@@ -13,42 +13,42 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Course</h2>
-		<div class="modify">
-		<h:form id="modify-course" prependId="false">
-			<h:inputHidden value="#{courseController.course.id}"/>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Code : " />
-				<h:panelGroup>
-					<h:selectOneMenu value="#{courseController.course.department.id}">
-						<f:selectItems value="#{departmentController.listDepartments()}" var="dept" 
-							       itemLabel="#{dept.code}" itemValue="#{dept.id}" />
+		<div id="modify">
+			<h:form id="modify-course" prependId="false">
+				<h:inputHidden value="#{courseController.course.id}"/>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Code : " />
+					<h:panelGroup>
+						<h:selectOneMenu value="#{courseController.course.department.id}">
+							<f:selectItems value="#{departmentController.listDepartments()}" var="dept" 
+								       itemLabel="#{dept.code}" itemValue="#{dept.id}" />
+						</h:selectOneMenu>
+						<h:inputText value="#{courseController.course.code}" />
+					</h:panelGroup>
+					<h:outputLabel value="Name : " />
+					<h:inputText value="#{courseController.course.name}" />
+					<h:outputLabel value="Description : " />
+					<h:inputTextarea value="#{courseController.course.description}" />
+					<h:outputLabel value="Type : " />
+					<h:selectOneMenu value="#{courseController.course.type}">
+						<f:selectItems value="#{courseController.courseTypes}" var="type" 
+                                                	       itemLabel="#{type}" itemValue="#{type}" />
 					</h:selectOneMenu>
-					<h:inputText value="#{courseController.course.code}" />
-				</h:panelGroup>
-				<h:outputLabel value="Name : " />
-				<h:inputText value="#{courseController.course.name}" />
-				<h:outputLabel value="Description : " />
-				<h:inputTextarea value="#{courseController.course.description}" />
-				<h:outputLabel value="Type : " />
-				<h:selectOneMenu value="#{courseController.course.type}">
-					<f:selectItems value="#{courseController.courseTypes}" var="type" 
-                                                       itemLabel="#{type}" itemValue="#{type}" />
-				</h:selectOneMenu>
-				<h:outputLabel value="Prerequisites : " />
-				<h:selectManyListbox value="#{courseController.prerequisiteIds}">
-						<f:selectItems value="#{courseController.listCourses()}" var="course" 
-							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
-							       itemValue="#{course.id}" />
-				</h:selectManyListbox>
-				<h:outputLabel value="Corequisites : " />
-				<h:selectManyListbox value="#{courseController.corequisiteIds}">
-						<f:selectItems value="#{courseController.listCourses()}" var="course" 
-							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
-							       itemValue="#{course.id}" />
-				</h:selectManyListbox>
-			</h:panelGrid>
-			<h:commandButton value="Modify" action="#{courseController.updateCourse()}" />
-		</h:form>
+					<h:outputLabel value="Prerequisites : " />
+					<h:selectManyListbox value="#{courseController.prerequisiteIds}">
+							<f:selectItems value="#{courseController.courseList}" var="course" 
+							   	    itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
+							 	      itemValue="#{course.id}" />
+					</h:selectManyListbox>
+					<h:outputLabel value="Corequisites : " />
+					<h:selectManyListbox value="#{courseController.corequisiteIds}">
+							<f:selectItems value="#{courseController.courseList}" var="course" 
+								       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
+								       itemValue="#{course.id}" />
+					</h:selectManyListbox>
+				</h:panelGrid>
+				<h:commandLink class="button" value="Modify" action="#{courseController.updateCourse()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>

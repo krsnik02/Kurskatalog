@@ -13,22 +13,22 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Department</h2>
-		<div class="modify">
-		<h:form id="modify-dept" prependId="false">
-			<h:inputHidden value="#{departmentController.department.id}" />
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Name : " />
-				<h:inputText value="#{departmentController.department.name}" />
-				<h:outputLabel value="Code :" />
-				<h:inputText value="#{departmentController.department.code}" />
-				<h:outputLabel value="Head :" />
-				<h:selectOneMenu value="#{departmentController.department.head.id}">
-					<f:selectItems value="#{userController.listProfessors()}" var="prof" 
-                                                       itemLabel="#{prof.firstName} #{prof.lastName}" itemValue="#{prof.id}" />
-				</h:selectOneMenu>
-			</h:panelGrid>
-			<h:commandButton value="Modify" action="#{departmentController.updateDepartment()}" />
-		</h:form>
+		<div id="modify">
+			<h:form id="modify-dept" prependId="false">
+				<h:inputHidden value="#{departmentController.department.id}" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Name : " />
+					<h:inputText value="#{departmentController.department.name}" />
+					<h:outputLabel value="Code :" />
+					<h:inputText value="#{departmentController.department.code}" />
+					<h:outputLabel value="Head :" />
+					<h:selectOneMenu value="#{departmentController.department.head.id}">
+						<f:selectItems value="#{userController.listProfessors()}" var="prof" 
+                                                	       itemLabel="#{prof.firstName} #{prof.lastName}" itemValue="#{prof.id}" />
+					</h:selectOneMenu>
+				</h:panelGrid>
+				<h:commandLink class="button" value="Modify" action="#{departmentController.updateDepartment()}" />
+			</h:form>
 		</div>
 	</h:body>
 </html>
