@@ -47,7 +47,7 @@
 				</h:selectOneMenu>
 				<h:outputLabel value="Location : " />
 				<h:selectOneMenu value="#{offeringController.offering.location.id}">
-					<f:selectItems value="#{locationsController.listLocations()}" var="loc"
+					<f:selectItems value="#{locationController.listLocations()}" var="loc"
                                                        itemLabel="#{loc.building} #{loc.room}" 
                                                        itemValue="#{loc.id}" />
 				</h:selectOneMenu>
