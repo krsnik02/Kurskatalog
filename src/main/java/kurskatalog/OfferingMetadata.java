@@ -34,7 +34,13 @@ public class OfferingMetadata {
     @OneToOne
     private TimeMeeting time;
 
-    public OfferingMetadata(){}
+    public OfferingMetadata()
+    {
+        offering = new Offering();
+        location = new Location();
+        professor = new Professor();
+        time = new TimeMeeting();
+    }
     
     public long getId() { return id; }
     public void setId( long id_ ) { id = id_; }
@@ -43,10 +49,10 @@ public class OfferingMetadata {
     public void setOffering( Offering offering_ ) { offering = offering_; }
     
     public Location getLocation() { return location; }
-    public void setLocation( Location locationId_ ) { location = locationId_; }
+    public void setLocation( Location location_ ) { location = location_; }
 
     public Professor getProfessor() { return professor; }
-    public void setProfessor( Professor professorId_ ) { professor = professorId_; }
+    public void setProfessor( Professor professor_ ) { professor = professor_; }
     
     public TimeMeeting getTime() { return time; }
     public void setTime( TimeMeeting time_ ) { time = time_; }

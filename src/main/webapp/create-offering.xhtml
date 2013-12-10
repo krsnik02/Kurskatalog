@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+     lang="en" xml:lang="en">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<title>Kurskatalog - Add Offering</title>
+		<title>Kurskatalog - Add Course Offering</title>
 		<link rel="stylesheet" type="text/css" href="basic-style.css" />
 	</h:head>
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
-		<h2>Add Course</h2>
+		<h2>Add Course Offering</h2>
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Course : " />
-				<h:selectOneMenu value="#{offeringController.offering.courseId}">
-					<f:selectItems value="#{offeringController.listCourses()}" var="course" itemLabel="#{course.name}" itemValue="#{course}" />
+				<h:selectOneMenu value="#{offeringController.offering.course.id}">
+					<f:selectItems value="#{offeringController.listCourses()}" var="course" itemLabel="#{course.name}" itemValue="#{course.id}" />
 				</h:selectOneMenu>
 				<h:outputLabel value="Semester : " />
 				<h:inputText value="#{offeringController.offering.semester}" />
@@ -22,13 +26,13 @@
 				<h:outputLabel value="Description : " />
 				<h:inputTextarea value="#{offeringController.offering.seats}" />
 				<h:outputLabel value="Location : " />
-				<h:inputTextarea value="#{offeringController.offeringMetadata.locationId}" />
+				<h:inputTextarea value="#{offeringController.offeringMetadata.location}" />
 				<h:outputLabel value="Professor : " />
-				<h:inputTextarea value="#{offeringController.offeringMetadata.professorId}" />
+				<h:inputTextarea value="#{offeringController.offeringMetadata.professor}" />
 				<h:outputLabel value="Time : " />
-				<h:inputTextarea value="#{offeringController.offeringMetadata.time}">
+			<!--	<h:inputText value="#{offeringController.offeringMetadata.time}">
 				    <f:convertDateTime dateStyle="full" timeZone="EST" type="time" />
-				</h:inputTextarea>
+				</h:inputText> -->
 			</h:panelGrid>
 			<h:commandButton value="Create" action="#{offeringController.persistOfferingMetadata()}" />
 		</h:form>

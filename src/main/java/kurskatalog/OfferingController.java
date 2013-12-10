@@ -24,16 +24,15 @@ public class OfferingController {
     Offering offering = new Offering();
     OfferingMetadata offeringMetadata = new OfferingMetadata();
     
-    public List<Course> getCourses(){
+    public List<Course> listCourses(){
 	return courseEJB.listCourses();
     }
     
-    public List<Professor> getProfessors(){
+    public List<Professor> listProfessors(){
 	return offeringEJB.listProfessors();
     }
     
-    public OfferingController( ){ offeringMetadata.setOffering(offering); }
-    
+    public OfferingController() { offeringMetadata.setOffering(offering); }
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) {
