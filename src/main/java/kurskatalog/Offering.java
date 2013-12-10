@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Offering
     private String building;
     private long room;
 
-    @OneToOne
+    @ManyToOne
     private Professor professor;
 
 

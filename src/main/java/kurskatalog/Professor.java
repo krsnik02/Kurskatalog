@@ -11,7 +11,7 @@ import javax.persistence.FetchType;
 public class Professor extends Account
 {
     
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="professor", cascade=CascadeType.ALL)
     private List<Offering> courseLoad;
     
     @OneToMany(mappedBy="head", fetch=FetchType.EAGER)
