@@ -49,7 +49,7 @@
 			<h:dataTable value="#{loginController.account.listCourses()}" var="offer" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
-				<h:outputFormat value="{0} {1} {2}" />
+				<h:outputFormat value="{0} {1} {2}">
 					<f:param value="#{offer.course.department.code}" />
 					<f:param value="#{offer.course.code}" />
 					<f:param value="#{offer.section}" />
@@ -70,11 +70,12 @@
 			<h:column>
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
 				<ui:repeat var="pcreq" value="#{offer.course.prerequisites}" varStatus="status">
-				<tr>
-				    <td>#{pcreq.department.code}</td>
-				    <td>#{pcreq.code}</td>
-				</tr>
-		    </ui:repeat>
+					<h:outputFormat value="{0} {1}">
+						<f:param value="#{pcreq.department.code}" />
+						<f:param value="#{pcreq.code}" />
+					</h:outputFormat>
+					<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
+		    		</ui:repeat>
 			</h:column>
 		</h:dataTable>
 		</c:if>
