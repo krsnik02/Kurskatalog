@@ -3,20 +3,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<title>Kurskatalog - Add Location</title>
+		<title>Kurskatalog - Register for Courses</title>
 		<h:outputStylesheet name="css/style.css" />
 	</h:head>
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
-		<h2>Add Location</h2>
-		<h:form id="new-location" prependId="false">
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Building : " />
-				<h:inputText value="#{locationController.location.building}" />
-				<h:outputLabel value="Room # : " />
-				<h:inputText value="#{locationController.location.room}" />
-			</h:panelGrid>
-		    <h:commandButton value="Create" action="#{locationController.createLocation()}" />
-		</h:form>
+		<h2>Register for Courses</h2>
+		<h:dataTable value="#{offeringController.listOfferings()}" var="offer" border="1">
+			<h:column>
+				<h:selectBooleanCheckbox value="#{bean.checked[item.id]}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Course" /></f:facet>
+				<h:outputText value="#{offer.offering.course.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Building" /></f:facet>
+				<h:outputText value="#{offer.location.building}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Room" /></f:facet>
+				<h:outputText value="#{offer.location.room}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
+				<h:outputText value="#{offer.professor.lastName}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
+				<h:outputText value="#{offer.professor.lastName}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
+				<h:outputText value="#{offer.time.startTime}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="End Time" /></f:facet>
+				<h:outputText value="#{offer.time.endTime}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Days Meeting" /></f:facet>
+				<h:outputText value="#{offer.time.daysMeeting}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Semester" /></f:facet>
+				<h:outputText value="#{offer.offering.semester}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Class Section" /></f:facet>
+				<h:outputText value="#{offer.offering.section}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="seats" /></f:facet>
+				<h:outputText value="#{offer.offering.seats}" />
+			</h:column>
+			<c:if test="#{loginController.administrator}">
+				<h:column>
+					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOffering(offering)}" /></h:form>
+				</h:column>
+				<h:column>
+					<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offering)}" /></h:form>
+				</h:column>
+			</c:if>
+		</h:dataTable>
 	</h:body>
 </html>
