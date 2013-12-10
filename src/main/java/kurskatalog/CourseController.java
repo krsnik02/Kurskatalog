@@ -14,6 +14,7 @@ public class CourseController
     private Course course = new Course();
     private List<String> prerequisiteIds = new ArrayList<String>();
     private List<String> corequisiteIds = new ArrayList<String>();
+    private String searchQuery;
 
     public Course getCourse() { return course; }
     public void setCourse( Course c ) { course = c; }
@@ -23,6 +24,9 @@ public class CourseController
 
     public List<String> getCorequisiteIds() { return corequisiteIds; }
     public void setCorequisiteIds( List<String> ids ) { corequisiteIds = ids; }
+
+    public String getSearchQuery() { return searchQuery; }
+    public void setSearchQuery( String query ) { searchQuery = query; }
 
 
     public List<Course> listCourses() { return ejb.listCourses(); }
