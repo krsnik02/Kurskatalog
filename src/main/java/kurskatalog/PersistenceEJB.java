@@ -63,11 +63,12 @@ public class PersistenceEJB
         return em.createQuery( "SELECT a FROM Administrator a", Administrator.class ).getResultList();
     }
 
+
+
     public List<Course> listCourses( CourseSearchQuery searchQuery )
     {
 	CriteriaBuilder builder = em.getCriteriaBuilder();
 	CriteriaQuery<Course> crit = builder.createQuery( Course.class );
-
 	Root<Course> c = crit.from( Course.class );
 	crit = crit.select( c );
 
@@ -80,11 +81,13 @@ public class PersistenceEJB
 						  searchQuery.getCourseCode() ) );
 
 	if ( searchQuery.getName() != null && searchQuery.getName() != "" )
-		crit = crit.where( builder.equal( c.get("name").as( String.class ),
-						  searchQuery.getName() ) );
+		crit = crit.where( builder.like( c.get("name").as( String.class ),
+						 "%" + searchQuery.getName() + "%" ) );
 
         return em.createQuery( crit ).getResultList();
     }
+
+
 
     public List<Department> listDepartments()
     {
