@@ -24,12 +24,14 @@ public class LocationController {
     public String updateLocation()
     {
         ejb.update( location );
+	location = new Location();
         return "list-locations.xhtml";
     }
 
     public String createLocation()
     {
         ejb.persist( location );
+	location = new Location();
         return "list-locations.xhtml";
     }
 
@@ -42,6 +44,7 @@ public class LocationController {
     public String deleteLocation( Location loc )
     {
         ejb.delete( loc );
+	location = new Location();
         return "list-locations.xhtml";
     }
 

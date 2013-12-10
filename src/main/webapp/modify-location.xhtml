@@ -10,6 +10,7 @@
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Location</h2>
 		<h:form id="modify-loc" prependId="false">
+			<h:inputHidden value="#{locationController.location.id}" />
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Building : " />
 				<h:inputText value="#{locationController.location.building}" />
