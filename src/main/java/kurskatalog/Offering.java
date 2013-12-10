@@ -25,7 +25,7 @@ public class Offering {
     private Course course;
     
     String semester;
-    String section;
+    String classSection;
     int seats;
 
     public Offering() 
