@@ -62,7 +62,7 @@
 			</c:if>
 			<c:if test="#{loginController.student}">
 				<h:column>
-					<h:form><h:commandLink value="Register" action="#{userController.register(loginController.account, offer)}" /></h:form>
+					<h:form><h:commandLink value="Register" action="#{offeringController.register(loginController.account, offer)}" /></h:form>
 				</h:column>
 			</c:if>
 		</h:dataTable>

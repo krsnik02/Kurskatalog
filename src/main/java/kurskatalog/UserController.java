@@ -110,4 +110,4 @@ public class UserController
         ejb.delete( admin );
         return "list-administrators.xhtml";
     }
-};
+}
