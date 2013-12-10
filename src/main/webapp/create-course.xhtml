@@ -33,13 +33,13 @@
                                                        itemLabel="#{type}" itemValue="#{type}" />
 				</h:selectOneMenu>
 				<h:outputLabel value="Prerequisites : " />
-				<h:selectManyListbox value="#{courseController.course.id}">
+				<h:selectManyListbox value="#{courseController.prerequisiteIds}">
 						<f:selectItems value="#{courseController.listCourses()}" var="course" 
 							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
 							       itemValue="#{course.id}" />
 				</h:selectManyListbox>
 				<h:outputLabel value="Corequisites : " />
-				<h:selectManyListbox value="#{courseController.course.id}">
+				<h:selectManyListbox value="#{courseController.corequisiteIds}">
 						<f:selectItems value="#{courseController.listCourses()}" var="course" 
 							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
 							       itemValue="#{course.id}" />

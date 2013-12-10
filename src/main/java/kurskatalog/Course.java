@@ -4,13 +4,15 @@
  */
 package kurskatalog;
 
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 
 /**
  *
@@ -18,8 +20,8 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class Course {
-    
+public class Course 
+{
     @Id
     @GeneratedValue
     private long id;
@@ -32,11 +34,8 @@ public class Course {
     @ManyToOne
     Department department;
     
-    @OneToMany
-    private List<Course> prerequisites;
-    
-    @OneToMany
-    private List<Course> corequisites;
+    @OneToMany(cascade=CascadeType.PERSIST)
+    private Set<Prerequisite> prerequisites;
     
     private int code;
     private CourseType type;
@@ -44,6 +43,7 @@ public class Course {
     public Course() 
     {
         department = new Department();
+	prerequisites = new HashSet<Prerequisite>();
     }
     
     public long getId(){ return id; }
@@ -63,4 +63,7 @@ public class Course {
     
     public CourseType getType(){ return type; }
     public void setType( CourseType type_ ){ type = type_; }
+
+    public Set<Prerequisite> getPrerequisites() { return prerequisites; }
+    public void setPrerequisites( Set<Prerequisite> prereqs ) { prerequisites = prereqs; }
 }
