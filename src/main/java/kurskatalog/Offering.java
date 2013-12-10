@@ -22,7 +22,7 @@ public class Offering {
     private long id;
     
     @OneToOne
-    private Course courseId;
+    private Course course;
     
     String semester;
     String classSection;

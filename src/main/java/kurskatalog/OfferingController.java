@@ -32,13 +32,13 @@ public class OfferingController {
 	return offeringEJB.listProfessors();
     }
     
-    public OfferingController( ){ offeringMetadata.setOfferingId(offering); }
+    public OfferingController( ){ offeringMetadata.setOffering(offering); }
     
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) {
 	offering = offering_;
-	offeringMetadata.setOfferingId(offering);
+	offeringMetadata.setOffering(offering);
     }
     
     public OfferingMetadata getOfferingMetadata() { return offeringMetadata; }
@@ -49,7 +49,7 @@ public class OfferingController {
 	offeringEJB.persistOffering( offeringMetadata );
 	offeringMetadata = new OfferingMetadata();
 	offering = new Offering();
-	offeringMetadata.setOfferingId(offering);
+	offeringMetadata.setOffering(offering);
         return "list-OfferingMetadata.xhtml";
     }
 
@@ -64,11 +64,11 @@ public class OfferingController {
         offeringEJB.updateOffering( offeringMetadata );
 	offeringMetadata = new OfferingMetadata();
 	offering = new Offering();
-	offeringMetadata.setOfferingId(offering);
+	offeringMetadata.setOffering(offering);
         return "list-OfferingMetadata.xhtml";
     }
     
-    public String deleteStudent( OfferingMetadata offeringM )
+    public String deleteOfferingMetadata( OfferingMetadata offeringM )
     {
         offeringEJB.deleteOffering( offeringM );
         return "list-OfferingMetadata.xhtml";
