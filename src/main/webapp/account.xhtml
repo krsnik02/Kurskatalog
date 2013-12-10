@@ -40,6 +40,11 @@
 		    <h3>Departments</h3>
 		    <h:outputText value="You are the head of the following departments: " />
 		    <h:outputText value="#{loginController.accountAsProfessor.headOf}" />
+		    <ui:repeat var="dept" value="#{loginController.accountAsProfessor.headOf}" varStatus="status">
+		    <tr>
+			    <td>#{dept.name}</td>
+		    </tr>
+		    </ui:repeat>
 		</c:if>
 		<c:if test="#{loginController.student or loginController.professor}">
 			<h3>Courses</h3>
