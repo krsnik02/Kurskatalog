@@ -15,15 +15,7 @@
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Course Catalog</h2>
 
-		<h:form>
-			<h:inputText value="#{courseController.searchQuery.departmentCode}" />
-			<h:inputText value="#{courseController.searchQuery.courseCode}" />
-			<h:inputText value="#{courseController.searchQuery.name}" />
-			<h:commandLink value="Search" action="#{courseController.search}">
-				<f:ajax execute="@form" render=":courselist" />
-			</h:commandLink>
-		</h:form>
-		<div class="listing">
+		<div id="listing">
 			<h:dataTable id="courselist" value="#{courseController.courseList}" var="course" border="1">
 				<h:column>
 					<f:facet name="header"><h:outputText value="Code" /></f:facet>
@@ -67,5 +59,17 @@
 				<p><h:link outcome="create-course.xhtml" value="Create Course" /></p>
 			</c:if>
 		</div>
+
+		<div id="search">
+			<h:form>
+				<h:inputText value="#{courseController.searchQuery.departmentCode}" />
+				<h:inputText value="#{courseController.searchQuery.courseCode}" />
+				<h:inputText value="#{courseController.searchQuery.name}" />
+				<h:commandLink value="Search" action="#{courseController.search}">
+					<f:ajax execute="@form" render=":courselist" />
+				</h:commandLink>
+			</h:form>
+		</div>
+
 	</h:body>
 </html>

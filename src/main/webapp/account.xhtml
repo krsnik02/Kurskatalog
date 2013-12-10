@@ -38,88 +38,91 @@
 			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
 		</h:form>
 		</div>
-		<div class="listing">
-		<c:if test="#{loginController.professor}">
-		    	<h3>Departments</h3>
 
-		    	<h:outputText value="You are the head of the following departments: " />
-		    	<ui:repeat var="dept" value="#{loginController.accountAsProfessor.headOf}" varStatus="status">
-		    		<h:outputText value="#{dept.name}" />
-				<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
-		    	</ui:repeat>
+		<c:if test="#{loginController.professor}">
+			<h3>Departments</h3>
+			<div id="departments">
+		    		<h:outputText value="You are the head of the following departments: " />
+		    		<ui:repeat var="dept" value="#{loginController.accountAsProfessor.headOf}" varStatus="status">
+		    			<h:outputText value="#{dept.name}" />
+					<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
+		    		</ui:repeat>
+			</div>
 		</c:if>
+
 		<c:if test="#{loginController.student || loginController.professor}">
 			<h3>Courses</h3>
-			<h:dataTable value="#{loginController.account.listCourses()}" var="offer" border="1">
-				<h:column>
-					<f:facet name="header"><h:outputText value="Code" /></f:facet>
-					<c:if test="#{loginController.professor}">
-						<h:form><h:commandLink action="#{offeringController.listRegistered(offer)}">
+			<div id="listing">
+				<h:dataTable value="#{loginController.account.listCourses()}" var="offer" border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="Code" /></f:facet>
+						<c:if test="#{loginController.professor}">
+							<h:form><h:commandLink action="#{offeringController.listRegistered(offer)}">
+								<h:outputFormat value="{0} {1} {2}">
+									<f:param value="#{offer.course.department.code}" />
+									<f:param value="#{offer.course.code}" />
+									<f:param value="#{offer.section}" />
+								</h:outputFormat>
+							</h:commandLink></h:form>
+						</c:if>
+						<c:if test="#{loginController.student}">
 							<h:outputFormat value="{0} {1} {2}">
 								<f:param value="#{offer.course.department.code}" />
 								<f:param value="#{offer.course.code}" />
 								<f:param value="#{offer.section}" />
 							</h:outputFormat>
-						</h:commandLink></h:form>
-					</c:if>
-					<c:if test="#{loginController.student}">
-						<h:outputFormat value="{0} {1} {2}">
-							<f:param value="#{offer.course.department.code}" />
-							<f:param value="#{offer.course.code}" />
-							<f:param value="#{offer.section}" />
-						</h:outputFormat>
-					</c:if>
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Name" /></f:facet>
-					<h:outputText value="#{offer.course.name}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Type" /></f:facet>
-					<h:outputText value="#{offer.course.type}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Location" /></f:facet>
-					<h:outputFormat value="{0} {1}">
-						<f:param value="#{offer.building}" />
-						<f:param value="#{offer.room}" />
-					</h:outputFormat>
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
-					<h:outputText value="#{offer.startTime}">
-						<f:convertDateTime pattern="hh:mm a" type="time" />
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Stop Time" /></f:facet>
-					<h:outputText value="#{offer.stopTime}">
-						<f:convertDateTime pattern="hh:mm a" type="time" />
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header"><h:outputText value="Days Of Week" /></f:facet>
-					<h:outputText value="#{offer.daysOfWeek}" />
-				</h:column>
-				<c:if test="#{loginController.student}">
+						</c:if>
+					</h:column>
 					<h:column>
-						<f:facet name="header"><h:outputText value="Professor" /></f:facet>
+						<f:facet name="header"><h:outputText value="Name" /></f:facet>
+						<h:outputText value="#{offer.course.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Type" /></f:facet>
+						<h:outputText value="#{offer.course.type}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Location" /></f:facet>
 						<h:outputFormat value="{0} {1}">
-							<f:param value="#{offer.professor.firstName}" />
-							<f:param value="#{offer.professor.lastName}" />
+							<f:param value="#{offer.building}" />
+							<f:param value="#{offer.room}" />
 						</h:outputFormat>
 					</h:column>
 					<h:column>
-						<h:form>
-							<h:commandLink value="Remove" action="#{offeringController.deregister(loginController.account, offer)}" />
-						</h:form>
+						<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
+						<h:outputText value="#{offer.startTime}">
+							<f:convertDateTime pattern="hh:mm a" type="time" />
+						</h:outputText>
 					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Stop Time" /></f:facet>
+						<h:outputText value="#{offer.stopTime}">
+							<f:convertDateTime pattern="hh:mm a" type="time" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header"><h:outputText value="Days Of Week" /></f:facet>
+						<h:outputText value="#{offer.daysOfWeek}" />
+					</h:column>
+					<c:if test="#{loginController.student}">
+						<h:column>
+							<f:facet name="header"><h:outputText value="Professor" /></f:facet>
+							<h:outputFormat value="{0} {1}">
+								<f:param value="#{offer.professor.firstName}" />
+								<f:param value="#{offer.professor.lastName}" />
+							</h:outputFormat>
+						</h:column>
+						<h:column>
+							<h:form>
+								<h:commandLink value="Remove" action="#{offeringController.deregister(loginController.account, offer)}" />
+							</h:form>
+						</h:column>
+					</c:if>
+				</h:dataTable>
+				<c:if test="#{loginController.student}">
+					<p><h:link outcome="list-offerings.xhtml" value="Register" /></p>
 				</c:if>
-			</h:dataTable>
-			<c:if test="#{loginController.student}">
-				<p><h:link outcome="list-offerings.xhtml" value="Register" /></p>
-			</c:if>
+			</div>
 		</c:if>
-		</div>
 	</h:body>
 </html>

@@ -14,28 +14,28 @@
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Administrators</h2>
-		<div class="listing">
-		<h:dataTable value="#{userController.listAdministrators()}" var="admin" border="1">
-			<h:column>
-				<f:facet name="header"><h:outputText value="First Name" /></f:facet>
-				<h:outputText value="#{admin.firstName}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
-				<h:outputText value="#{admin.lastName}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="Username" /></f:facet>
-				<h:outputText value="#{admin.credentials.username}" />
-			</h:column>
-			<h:column>
-				<h:form><h:commandLink value="Modify" action="#{userController.modifyAdministrator(admin)}" /></h:form>
-			</h:column>
-			<h:column>
-				<h:form><h:commandLink value="Delete" action="#{userController.deleteAdministrator(admin)}" /></h:form>
-			</h:column>
-		</h:dataTable>
-		<p><h:link outcome="create-administrator.xhtml" value="Create Administrator" /></p>
+		<div id="listing">
+			<h:dataTable value="#{userController.listAdministrators()}" var="admin" border="1">
+				<h:column>
+					<f:facet name="header"><h:outputText value="First Name" /></f:facet>
+					<h:outputText value="#{admin.firstName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"><h:outputText value="Last Name" /></f:facet>
+					<h:outputText value="#{admin.lastName}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"><h:outputText value="Username" /></f:facet>
+					<h:outputText value="#{admin.credentials.username}" />
+				</h:column>
+				<h:column>
+					<h:form><h:commandLink value="Modify" action="#{userController.modifyAdministrator(admin)}" /></h:form>
+				</h:column>
+				<h:column>
+					<h:form><h:commandLink value="Delete" action="#{userController.deleteAdministrator(admin)}" /></h:form>
+				</h:column>
+			</h:dataTable>
+			<p><h:link outcome="create-administrator.xhtml" value="Create Administrator" /></p>
 		</div>
 	</h:body>
 </html>
