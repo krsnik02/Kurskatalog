@@ -20,9 +20,6 @@ public class OfferingController {
     
     Offering offering = new Offering();
     
-    public OfferingController() { }
-
-
     public DayOfWeek[] getDaysOfWeek()
     {
         DayOfWeek[] days = { DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, 

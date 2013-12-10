@@ -11,6 +11,7 @@
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Modify Course</h2>
 		<h:form id="modify-course" prependId="false">
+			<h:inputHidden value="#{offeringController.offering.id}" />
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Course : " />
 				<h:selectOneMenu value="#{offeringController.offering.course.id}">
@@ -42,12 +43,10 @@
                                                        itemLabel="#{prof.firstName} #{prof.lastName}" 
                                                        itemValue="#{prof.id}" />
 				</h:selectOneMenu>
-				<h:outputLabel value="Location : " />
-				<h:selectOneMenu value="#{offeringController.offering.location.id}">
-					<f:selectItems value="#{locationsController.listLocations()}" var="loc"
-                                                       itemLabel="#{loc.building} #{loc.room}" 
-                                                       itemValue="#{loc.id}" />
-				</h:selectOneMenu>
+				<h:outputLabel value="Building : " />
+				<h:inputText value="#{offeringController.offering.building}" />
+				<h:outputLabel value="Room : " />
+				<h:inputText value="#{offeringController.offering.room}" />
 			</h:panelGrid>
 			<h:commandButton value="Modify" action="#{offeringController.updateOffering()}" />
 		</h:form>
