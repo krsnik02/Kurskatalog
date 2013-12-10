@@ -9,7 +9,7 @@ import java.util.List;
 public class DepartmentController
 {
     @EJB
-    private DepartmentEJB departmentEJB;
+    private PersistenceEJB ejb;
 
     private Department department = new Department();
 
@@ -17,13 +17,13 @@ public class DepartmentController
     public void Department( Department dept ) { department = dept; }
 
     
-    public List<Department> listDepartments() { return departmentEJB.listDepartments(); }
+    public List<Department> listDepartments() { return ejb.listDepartments(); }
    
 
 
     public String persistDepartment()
     {
-        departmentEJB.persistDepartment( department );
+        ejb.persist( department );
 	department = new Department();
         return "list-departments.xhtml";
     }
@@ -36,14 +36,14 @@ public class DepartmentController
 
     public String updateDepartment()
     {
-        departmentEJB.updateDepartment( department );
+        ejb.update( department );
 	department = new Department();
         return "list-departments.xhtml";
     }
 
     public String deleteDepartment( Department dept )
     {
-        departmentEJB.deleteDepartment( dept );
+        ejb.delete( dept );
 	department = new Department();
         return "list-departments.xhtml";
     }

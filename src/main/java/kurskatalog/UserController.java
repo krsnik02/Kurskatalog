@@ -8,7 +8,7 @@ import java.util.List;
 public class UserController
 {
     @EJB
-    private AccountEJB accountEJB;
+    private PersistenceEJB ejb;
 
     private Student student = new Student();
     private Professor professor = new Professor();
@@ -25,27 +25,27 @@ public class UserController
 
 
 
-    public List<Student> listStudents() { return accountEJB.listStudents(); }
-    public List<Professor> listProfessors() { return accountEJB.listProfessors(); }
-    public List<Administrator> listAdministrators() { return accountEJB.listAdministrators(); }
+    public List<Student> listStudents() { return ejb.listStudents(); }
+    public List<Professor> listProfessors() { return ejb.listProfessors(); }
+    public List<Administrator> listAdministrators() { return ejb.listAdministrators(); }
 
     public String persistStudent()
     {
-	accountEJB.persistAccount( student );
+	ejb.persist( student );
 	student = new Student();
         return "list-students.xhtml";
     }
 
     public String persistProfessor()
     {
-	accountEJB.persistAccount( professor );
+	ejb.persist( professor );
 	professor = new Professor();
         return "list-professors.xhtml";
     }
 
     public String persistAdministrator() 
     {
-	accountEJB.persistAccount( administrator );
+	ejb.persist( administrator );
 	administrator = new Administrator();
         return "list-administrators.xhtml";
     }
@@ -72,21 +72,21 @@ public class UserController
 
     public String updateStudent()
     {
-        accountEJB.updateAccount( student );
+        ejb.update( student );
         student = new Student();
         return "list-students.xhtml";
     }
 
     public String updateProfessor()
     {
-        accountEJB.updateAccount( professor );
+        ejb.update( professor );
         professor = new Professor();
         return "list-professors.xhtml";
     }
 
     public String updateAdministrator()
     {
-        accountEJB.updateAccount( administrator );
+        ejb.update( administrator );
         administrator = new Administrator();
         return "list-administrators.xhtml";
     }
@@ -95,19 +95,19 @@ public class UserController
 
     public String deleteStudent( Student stud )
     {
-        accountEJB.deleteAccount( stud );
+        ejb.delete( stud );
         return "list-students.xhtml";
     }
 
     public String deleteProfessor( Professor prof )
     {
-        accountEJB.deleteAccount( prof );
+        ejb.delete( prof );
         return "list-professors.xhtml";
     }
 
     public String deleteAdministrator( Administrator admin )
     {
-        accountEJB.deleteAccount( admin );
+        ejb.delete( admin );
         return "list-administrators.xhtml";
     }
 };

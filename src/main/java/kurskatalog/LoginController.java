@@ -12,11 +12,11 @@ public class LoginController
     private Account account = null;
 
     @EJB
-    private AccountEJB accountEJB;
+    private PersistenceEJB ejb;
     
     public String login()
     {
-	account = accountEJB.login( credentials );
+	account = ejb.getAccountForCredentials( credentials );
         if ( account != null )
 	{
 		credentials = null;	
@@ -31,7 +31,6 @@ public class LoginController
         return "index.xhtml";
     }
 
-      
     public void setAccount( Account acct ) { account = acct; }
     public Account getAccount() { return account; }
 

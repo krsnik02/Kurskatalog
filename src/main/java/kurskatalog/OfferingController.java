@@ -16,7 +16,7 @@ import javax.faces.bean.ManagedBean;
 public class OfferingController {
     
     @EJB
-    private OfferingEJB offeringEJB;
+    private PersistenceEJB ejb;
     
     Offering offering = new Offering();
     
@@ -30,15 +30,14 @@ public class OfferingController {
         return days;
     }
  
-    public List<Offering> listOfferings() { return offeringEJB.listOfferings(); }
-    public List<Location> listLocations() { return offeringEJB.listLocations(); }
+    public List<Offering> listOfferings() { return ejb.listOfferings(); }
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) { offering = offering_; }
     
     public String persistOffering()
     {
-	offeringEJB.persistOffering( offering );
+	ejb.persist( offering );
 	offering = new Offering();
         return "list-OfferingMetadata.xhtml";
     }
@@ -51,14 +50,14 @@ public class OfferingController {
     
     public String updateOffering()
     {
-        offeringEJB.updateOffering( offering );
+        ejb.update( offering );
 	offering = new Offering();
         return "list-OfferingMetadata.xhtml";
     }
     
     public String deleteOffering( Offering offer )
     {
-        offeringEJB.deleteOffering( offer );
+        ejb.delete( offer );
         return "list-OfferingMetadata.xhtml";
     }
 }

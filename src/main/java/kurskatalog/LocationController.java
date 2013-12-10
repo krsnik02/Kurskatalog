@@ -19,26 +19,26 @@ public class LocationController {
     private List<Location> locations = new ArrayList<Location>();
     
     @EJB
-    private OfferingEJB offeringEJB;
+    private PersistenceEJB ejb;
     
     @PostConstruct
     public void initialize()
     {
-        locations = offeringEJB.listLocations();
+        locations = ejb.listLocations();
     }
     
     public String updateLocation()
     {
         locations = null;
-        offeringEJB.merge( location );
-        locations = offeringEJB.listLocations();
+        ejb.update( location );
+        locations = ejb.listLocations();
         return "list-locations.xhtml";
     }
 
     public String createLocation()
     {
-        offeringEJB.persist( location );
-        locations = offeringEJB.listLocations();
+        ejb.persist( location );
+        locations = ejb.listLocations();
         return "list-locations.xhtml";
     }
 
@@ -51,8 +51,8 @@ public class LocationController {
     public String deleteLocation( Location loc )
     {
         locations = null;
-        offeringEJB.remove( loc );
-        locations = offeringEJB.listLocations();
+        ejb.delete( loc );
+        locations = ejb.listLocations();
         return "list-locations.xhtml";
     }
 

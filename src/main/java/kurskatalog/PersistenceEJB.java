@@ -2,7 +2,7 @@ package kurskatalog;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceCOntext;
+import javax.persistence.PersistenceContext;
 import javax.persistence.NoResultException;
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class PersistenceEJB
         return account;
     }
 
-    public List<Students> listStudents()
+    public List<Student> listStudents()
     {
         return em.createQuery( "SELECT s FROM Student s", Student.class ).getResultList();
     }

@@ -8,14 +8,14 @@ import java.util.List;
 public class CourseController
 {
     @EJB
-    private CourseEJB courseEJB;
+    private PersistenceEJB ejb;
 
     private Course course = new Course();
 
     public Course getCourse() { return course; }
     public void setCourse( Course c ) { course = c; }
 
-    public List<Course> listCourses() { return courseEJB.listCourses(); }
+    public List<Course> listCourses() { return ejb.listCourses(); }
 
     public CourseType[] getCourseTypes() 
     {
@@ -26,7 +26,7 @@ public class CourseController
 
     public String persistCourse()
     {
-        courseEJB.persistCourse( course );
+        ejb.persist( course );
 	course = new Course();
 	return "list-courses.xhtml";
     }
@@ -40,7 +40,7 @@ public class CourseController
 
     public String updateCourse()
     {
-        courseEJB.updateCourse( course );
+        ejb.update( course );
         course = new Course();
         return "list-courses.xhtml";
     }
@@ -48,7 +48,7 @@ public class CourseController
     
     public String deleteCourse( Course c )
     {
-        courseEJB.deleteCourse( c );
+        ejb.delete( c );
         return "list-courses.xhtml";
     }
 }
