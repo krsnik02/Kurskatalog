@@ -19,7 +19,8 @@ public class LoginController
 	account = ejb.getAccountForCredentials( credentials );
         if ( account != null )
 	{
-		credentials = null;	
+	    credentials = new Credentials();
+            credentials.setUsername( account.getCredentials().getUsername() );	
 	}
 	return "index.xhtml";
     }
@@ -30,6 +31,21 @@ public class LoginController
 	credentials = new Credentials();
         return "index.xhtml";
     }
+
+
+    public String updateCredentials()
+    {
+        Account checkAcct = ejb.getAccountForCredentials( credentials );
+	if ( checkAcct != null && checkAcct.getId() == account.getId() )
+        {
+            ejb.update( account );
+            credentials = new Credentials();
+            credentials.setUsername( account.getCredentials().getUsername() );
+        }
+        return "account.xhtml";
+    }
+
+
 
     public void setAccount( Account acct ) { account = acct; }
     public Account getAccount() { return account; }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      lang="en" xml:lang="en">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kurskatalog - My Account</title>
+		<h:outputStylesheet name="css/style.css" />
+	</h:head>
+	<h:body>
+		<ui:include src="WEB-INF/header.xhtml" />
+		<h2><h:outputLabel value="#{loginController.account.firstName} #{loginController.account.lastName}" /></h2>
+
+		<h3>Modify Account</h3>
+		<h:form>
+			<h:inputHidden value="#{loginController.account.id}" />
+			<h:inputHidden value="#{loginController.credentials.username}" />
+			<h:panelGrid columns="2">
+				<h:outputLabel value="First Name : " />
+				<h:inputText value="#{loginController.account.firstName}" />
+				<h:outputLabel value="Last Name : " />
+				<h:inputText value="#{loginController.account.lastName}" />
+				<h:outputLabel value="Username : " />
+				<h:inputText value="#{loginController.account.credentials.username}" />
+				<h:outputLabel value="Current Password : " />
+				<h:inputSecret value="#{loginController.credentials.plaintextPassword}" />
+				<h:outputLabel value="New Password : " />
+				<h:inputSecret value="#{loginController.account.credentials.plaintextPassword}" />
+			</h:panelGrid>
+			<h:commandButton value="Modify" action="#{loginController.updateCredentials()}" />
+		</h:form>
+
+		<c:if test="#{loginController.student or loginController.professor}">
+			<h3>Courses</h3>
+		</c:if>
+	</h:body>
+</html>
