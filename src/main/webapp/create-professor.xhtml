@@ -18,7 +18,7 @@
 				<h:outputLabel value="Username : " />
 				<h:inputText id="username" value="#{userController.professor.credentials.username}" />
 				<h:outputLabel value="Password : " />
-				<h:inputText id="password" value="#{userController.professor.credentials.plaintextPassword}" />
+				<h:inputSecret id="password" value="#{userController.professor.credentials.plaintextPassword}" />
 			</h:panelGrid>
 			<h:commandButton value="Create" action="#{userController.persistProfessor()}" />
 		</h:form>
