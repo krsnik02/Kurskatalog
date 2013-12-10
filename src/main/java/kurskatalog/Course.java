@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 /**
  *
@@ -34,7 +35,7 @@ public class Course
     @ManyToOne
     Department department;
     
-    @OneToMany(cascade=CascadeType.PERSIST)
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private List<Prerequisite> prerequisites;
     
     private int code;

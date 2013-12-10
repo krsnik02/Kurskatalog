@@ -17,7 +17,10 @@
 		<h:dataTable value="#{courseController.listCourses()}" var="course" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
-				<h:outputText value="#{course.department.code} #{course.code}" />
+				<h:outputFormat value="{0} {1}">
+					<f:param value="#{course.department.code}" />
+					<f:param value="#{course.code}" />
+				</h:outputFormat>
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Name" /></f:facet>

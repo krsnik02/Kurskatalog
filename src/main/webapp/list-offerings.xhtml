@@ -18,7 +18,11 @@
 		<h:dataTable value="#{offeringController.listOfferings()}" var="offer" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Course Code" /></f:facet>
-				<h:outputText value="#{offer.course.department.code} #{offer.course.code} #{offer.section}" />
+				<h:outputFormat value="{0} {1} {2}">
+					<f:param value="#{offer.course.department.code}" />
+					<f:param value="#{offer.course.code}" />
+					<f:param value="#{offer.section}" />
+				</h:outputFormat>
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Semester" /></f:facet>
@@ -26,11 +30,17 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Location" /></f:facet>
-				<h:outputText value="#{offer.building} #{offer.room}" />
+				<h:outputFormat value="{0} {1}">
+					<f:param value="#{offer.building}" />
+					<f:param value="#{offer.room}" />
+				</h:outputFormat>
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Professor" /></f:facet>
-				<h:outputText value="#{offer.professor.firstName} #{offer.professor.lastName}" />
+				<h:outputFormat value="{0} {1}">
+					<f:param value="#{offer.professor.firstName}" />
+					<f:param value="#{offer.professor.lastName}" />
+				</h:outputFormat>
 			</h:column>
 		    	<h:column>
 				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>

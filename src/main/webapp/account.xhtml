@@ -12,7 +12,10 @@
 	</h:head>
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
-		<h2><h:outputLabel value="#{loginController.account.firstName} #{loginController.account.lastName}" /></h2>
+		<h2><h:outputFormat value="{0} {1}">
+			<f:param value="#{loginController.account.firstName}" />
+			<f:param value="#{loginController.account.lastName}" />
+		</h:outputFormat></h2>
 
 		<h3>Modify Account</h3>
 		<h:form>
