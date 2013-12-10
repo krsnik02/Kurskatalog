@@ -64,19 +64,37 @@
 				<h:outputText value="#{offer.course.type}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header"><h:outputText value="Description" /></f:facet>
-				<h:outputText value="#{offer.course.description}" />
+				<f:facet name="header"><h:outputText value="Location" /></f:facet>
+				<h:outputFormat value="{0} {1}">
+					<f:param value="#{offer.building}" />
+					<f:param value="#{offer.room}" />
+				</h:outputFormat>
 			</h:column>
 			<h:column>
-				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
-				<ui:repeat var="pcreq" value="#{offer.course.prerequisites}" varStatus="status">
-					<h:outputFormat value="{0} {1}">
-						<f:param value="#{pcreq.course.department.code}" />
-						<f:param value="#{pcreq.course.code}" />
-					</h:outputFormat>
-					<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
-		    		</ui:repeat>
+				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
+				<h:outputText value="#{offer.startTime}">
+					<f:convertDateTime pattern="hh:mm a" type="time" />
+				</h:outputText>
 			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Stop Time" /></f:facet>
+				<h:outputText value="#{offer.stopTime}">
+					<f:convertDateTime pattern="hh:mm a" type="time" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Days Of Week" /></f:facet>
+				<h:outputText value="#{offer.daysOfWeek}" />
+			</h:column>
+			<c:if test="#{loginController.student}">
+				<h:column>
+					<f:facet name="header"><h:outputText value="Professor" /></f:facet>
+					<h:outputFormat value="{0} {1}">
+						<f:param value="#{offer.professor.firstName}" />
+						<f:param value="#{offer.professor.lastName}" />
+					</h:outputFormat>
+				</h:column>
+			</c:if>
 		</h:dataTable>
 		</c:if>
 	</h:body>
