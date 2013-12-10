@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 
 @Stateless
 public class PersistenceEJB
@@ -72,16 +73,17 @@ public class PersistenceEJB
 	Root<Course> c = crit.from( Course.class );
 	crit = crit.select( c );
 
+	Predicate p = builder.isNotNull( c.get( "id" ) );
 	if ( searchQuery.getDepartmentCode() != null && searchQuery.getDepartmentCode() != "" )
-	    crit = crit.where( builder.equal( c.get( "department" ).get( "code" ).as( String.class ), searchQuery.getDepartmentCode() ) );
+	    p = builder.and( p, builder.equal( c.get( "department" ).get( "code" ).as( String.class ), searchQuery.getDepartmentCode() ) );
 
 	if ( searchQuery.getCourseCode() != null && searchQuery.getCourseCode() != "" )
-	    crit = crit.where( builder.equal( c.get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
+	    p = builder.and( p, builder.equal( c.get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
 
 	if ( searchQuery.getName() != null && searchQuery.getName() != "" )
-	    crit = crit.where( builder.like( c.get( "name" ).as( String.class ), "%" + searchQuery.getName() + "%" ) );
+	    p = builder.and( p, builder.like( c.get( "name" ).as( String.class ), "%" + searchQuery.getName() + "%" ) );
 
-        return em.createQuery( crit ).getResultList();
+        return em.createQuery( crit.where( p ) ).getResultList();
     }
 
 
@@ -92,29 +94,30 @@ public class PersistenceEJB
         Root<Offering> o = crit.from( Offering.class );
         crit = crit.select( o );
 
+        Predicate p = builder.isNotNull( o.get( "id" ) );
         if ( searchQuery.getDepartmentCode() != null && searchQuery.getDepartmentCode() != "" )
-            crit = crit.where( builder.equal( o.get( "course" ).get( "department" ).get( "code" ).as( String.class ), 
-                                              searchQuery.getDepartmentCode() ) );
+            p = builder.and( p, builder.equal( o.get( "course" ).get( "department" ).get( "code" ).as( String.class ), 
+                                               searchQuery.getDepartmentCode() ) );
    
         if ( searchQuery.getCourseCode() != null && searchQuery.getCourseCode() != "" )
-            crit = crit.where( builder.equal( o.get( "course" ).get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
+            p = builder.and( p, builder.equal( o.get( "course" ).get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
 
         if ( searchQuery.getSection() != null && searchQuery.getSection() != "" )
-            crit = crit.where( builder.equal( o.get( "section" ).as( String.class ), searchQuery.getSection() ) );
+            p = builder.and( p, builder.equal( o.get( "section" ).as( String.class ), searchQuery.getSection() ) );
 
         if ( searchQuery.getCourseName() != null && searchQuery.getCourseName() != "" )
-            crit = crit.where( builder.like( o.get( "course" ).get( "name" ).as( String.class ), 
-                                             "%" + searchQuery.getCourseName() + "%" ) );
+            p = builder.and( p, builder.like( o.get( "course" ).get( "name" ).as( String.class ), 
+                                              "%" + searchQuery.getCourseName() + "%" ) );
 
         if ( searchQuery.getProfessorFirstName() != null && searchQuery.getProfessorFirstName() != "" )
-            crit = crit.where( builder.like( o.get( "professor" ).get( "firstName" ).as( String.class ), 
-                                             "%" + searchQuery.getProfessorFirstName() + "%" ) );
+            p = builder.and( p, builder.like( o.get( "professor" ).get( "firstName" ).as( String.class ), 
+                                              "%" + searchQuery.getProfessorFirstName() + "%" ) );
 
         if ( searchQuery.getProfessorLastName() != null && searchQuery.getProfessorLastName() != "" )
-            crit = crit.where( builder.like( o.get( "professor" ).get( "lastName" ).as( String.class ),
-                                             "%" + searchQuery.getProfessorLastName() + "%" ) );
+            p = builder.and( p, builder.like( o.get( "professor" ).get( "lastName" ).as( String.class ),
+                                              "%" + searchQuery.getProfessorLastName() + "%" ) );
 
-        return em.createQuery( crit ).getResultList();
+        return em.createQuery( crit.where( p ) ).getResultList();
     }
 
 
