@@ -19,10 +19,10 @@
 				<h:outputText value="#{loc.room}" />
 			</h:column>
 			<h:column>
-				<h:form><h:commandLink value="Modify" action="#{userController.modifyProfessor(prof)}" /></h:form>
+				<h:form><h:commandLink value="Modify" action="#{locationController.modifyLocation(loc)}" /></h:form>
 			</h:column>
 			<h:column>
-				<h:form><h:commandLink value="Delete" action="#{userController.deleteProfessor(prof)}" /></h:form>
+			    <h:form><h:commandLink value="Delete" action="#{locationController.deleteLocation(loc)}" /></h:form>
 			</h:column>
 		</h:dataTable>
 		<p><h:link outcome="create-professor.xhtml" value="Create Professor" /></p>
