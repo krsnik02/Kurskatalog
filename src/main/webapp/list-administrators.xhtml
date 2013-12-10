@@ -29,10 +29,14 @@
 					<h:outputText value="#{admin.credentials.username}" />
 				</h:column>
 				<h:column>
-					<h:form><h:commandLink value="Modify" action="#{userController.modifyAdministrator(admin)}" /></h:form>
-				</h:column>
-				<h:column>
-					<h:form><h:commandLink value="Delete" action="#{userController.deleteAdministrator(admin)}" /></h:form>
+					<h:form>
+						<h:commandLink action="#{userController.modifyAdministrator(admin)}">
+							<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
+						</h:commandLink>
+						<h:commandLink action="#{userController.deleteAdministrator(admin)}">
+							<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
+						</h:commandLink>
+					</h:form>
 				</h:column>
 			</h:dataTable>
 			<p><h:link outcome="create-administrator.xhtml" value="Create Administrator" /></p>

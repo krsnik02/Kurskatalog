@@ -29,12 +29,15 @@
 					<h:outputText value="#{prof.credentials.username}" />
 				</h:column>
 				<h:column>
-					<h:form><h:commandLink value="Modify" action="#{userController.modifyProfessor(prof)}" /></h:form>
-				</h:column>
-				<h:column>
-					<h:form><h:commandLink value="Delete" action="#{userController.deleteProfessor(prof)}" /></h:form>
-				</h:column>
-			</h:dataTable>
+					<h:form>
+						<h:commandLink action="#{userController.modifyProfessor(prof)}">
+							<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
+						</h:commandLink>
+						<h:commandLink action="#{userController.deleteProfessor(prof)}">
+							<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
+						</h:commandLink>
+					</h:form>
+				</h:column>			</h:dataTable>
 			<p><h:link outcome="create-professor.xhtml" value="Create Professor" /></p>
 		</div>
 	</h:body>

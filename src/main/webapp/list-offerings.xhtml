@@ -69,12 +69,15 @@
 				</h:column>
 				<c:if test="#{loginController.administrator}">
 					<h:column>
-						<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOffering(offer)}" /></h:form>
-					</h:column>
-					<h:column>
-						<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offer)}" /></h:form>
-					</h:column>
-				</c:if>
+						<h:form>
+							<h:commandLink action="#{userController.modifyOffering(offer)}">
+								<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
+							</h:commandLink>
+							<h:commandLink action="#{userController.deleteOffering(offer)}">
+								<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
+							</h:commandLink>
+						</h:form>
+					</h:column>				</c:if>
 				<c:if test="#{loginController.student}">
 					<h:column>
 						<h:form><h:commandLink value="Register" action="#{offeringController.register(loginController.account, offer)}" /></h:form>

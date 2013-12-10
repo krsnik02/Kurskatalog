@@ -33,11 +33,15 @@
 				</h:column>
 				<c:if test="#{loginController.administrator}">
 					<h:column>
-						<h:form><h:commandLink value="Modify" action="#{departmentController.modifyDepartment(dept)}" /></h:form>
-					</h:column>
-					<h:column>
-						<h:form><h:commandLink value="Delete" action="#{departmentController.deleteDepartment(dept)}" /></h:form>
-					</h:column>
+						<h:form>
+							<h:commandLink action="#{userController.modifyDepartment(dept)}">
+								<h:graphicImage class="icon" name="icons/edit/edit-26.png" />
+							</h:commandLink>
+							<h:commandLink action="#{userController.deleteDepartment(dept)}">
+								<h:graphicImage class="icon" name="icons/delete/delete-26.png" />
+							</h:commandLink>
+						</h:form>
+					</h:column>			
 				</c:if>
 			</h:dataTable>
 			<c:if test="#{loginController.administrator}">
