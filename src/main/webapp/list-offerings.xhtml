@@ -11,65 +11,54 @@
 		<title>Kurskatalog - Course Offerings</title>
 		<h:outputStylesheet name="css/style.css" />
 	</h:head>
-	<ui:include src="WEB-INF/header.xhtml" />
-	<h2>Course Offerings</h2>
-	<c:if test="#{loginController.administrator}">
-		<p><h:link outcome="create-offering.xhtml" value="Create Offering" /></p>
-	</c:if>
 	<h:body>
+		<ui:include src="WEB-INF/header.xhtml" />
+		<h2>Course Offerings</h2>
+
 		<h:dataTable value="#{offeringController.listOfferings()}" var="offer" border="1">
 			<h:column>
-				<f:facet name="header"><h:outputText value="Course" /></f:facet>
-				<h:outputText value="#{offer.offering.course.name}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="Building" /></f:facet>
-				<h:outputText value="#{offer.location.building}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="Room" /></f:facet>
-				<h:outputText value="#{offer.location.room}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
-				<h:outputText value="#{offer.professor.lastName}" />
-			</h:column>
-		    	<h:column>
-				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
-				<h:outputText value="#{offer.professor.lastName}" />
-			</h:column>
-		    	<h:column>
-				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
-				<h:outputText value="#{offer.time.startTime}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header"><h:outputText value="End Time" /></f:facet>
-				<h:outputText value="#{offer.time.endTime}" />
-			</h:column>
-		    	<h:column>
-				<f:facet name="header"><h:outputText value="Days Meeting" /></f:facet>
-				<h:outputText value="#{offer.time.daysMeeting}" />
+				<f:facet name="header"><h:outputText value="Course Code" /></f:facet>
+				<h:outputText value="#{offer.course.department.code} #{offer.course.code} #{offer.section}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Semester" /></f:facet>
-				<h:outputText value="#{offer.offering.semester}" />
+				<h:outputText value="#{offer.semester}" />
 			</h:column>
 			<h:column>
-				<f:facet name="header"><h:outputText value="Class Section" /></f:facet>
-				<h:outputText value="#{offer.offering.section}" />
+				<f:facet name="header"><h:outputText value="Location" /></f:facet>
+				<h:outputText value="#{offer.building} #{offer.room}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="Professor" /></f:facet>
+				<h:outputText value="#{offer.professor.firstName} #{offer.professor.lastName}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
+				<h:outputText value="#{offer.startTime}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"><h:outputText value="End Time" /></f:facet>
+				<h:outputText value="#{offer.stopTime}" />
+			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Days Of Week" /></f:facet>
+				<h:outputText value="#{offer.daysOfWeek}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="seats" /></f:facet>
-				<h:outputText value="#{offer.offering.seats}" />
+				<h:outputText value="#{offer.seats}" />
 			</h:column>
 			<c:if test="#{loginController.administrator}">
 				<h:column>
-					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOffering(offering)}" /></h:form>
+					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOffering(offer)}" /></h:form>
 				</h:column>
 				<h:column>
-					<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offering)}" /></h:form>
+					<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offer)}" /></h:form>
 				</h:column>
 			</c:if>
 		</h:dataTable>
+		<c:if test="#{loginController.administrator}">
+			<p><h:link outcome="create-offering.xhtml" value="Create Offering" /></p>
+		</c:if>
 	</h:body>
 </html>
