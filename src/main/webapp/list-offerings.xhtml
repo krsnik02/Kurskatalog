@@ -36,6 +36,10 @@
 				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
 				<h:outputText value="#{offering.professor.lastName}" />
 			</h:column>
+		    	<h:column>
+				<f:facet name="header"><h:outputText value="Professor (Last Name)" /></f:facet>
+				<h:outputText value="#{offering.professor.lastName}" />
+			</h:column>
 			<c:if test="#{loginController.administrator}">
 				<h:column>
 					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOfferingMetadata(offering)}" /></h:form>
