@@ -36,7 +36,13 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
-				<h:outputText value="#{course.prerequisites}" />
+				<ui:repeat var="pcreq" value="#{course.prerequisites}" varStatus="status">
+					<h:outputFormat value="{0} {1}">
+						<f:param value="#{pcreq.course.department.code}" />
+						<f:param value="#{pcreq.course.code}" />
+					</h:outputFormat>
+					<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
+		    		</ui:repeat>
 			</h:column>
 			<c:if test="#{loginController.administrator}">
 				<h:column>

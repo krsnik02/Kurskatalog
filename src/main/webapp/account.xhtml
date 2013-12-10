@@ -71,8 +71,8 @@
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
 				<ui:repeat var="pcreq" value="#{offer.course.prerequisites}" varStatus="status">
 					<h:outputFormat value="{0} {1}">
-						<f:param value="#{pcreq.department.code}" />
-						<f:param value="#{pcreq.code}" />
+						<f:param value="#{pcreq.course.department.code}" />
+						<f:param value="#{pcreq.course.code}" />
 					</h:outputFormat>
 					<ui:fragment rendered="#{!status.last}"><h:outputText value=", " /></ui:fragment>
 		    		</ui:repeat>
