@@ -23,9 +23,9 @@ public class TimeMeeting {
     @GeneratedValue
     private long id;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private GregorianCalendar startTime;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private GregorianCalendar endTime;
     
     private Day daysMeeting;

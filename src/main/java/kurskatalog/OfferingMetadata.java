@@ -23,30 +23,36 @@ public class OfferingMetadata {
     private long id;
     
     @OneToOne
-    private Offering offeringId;
+    private Offering offering;
     
     @OneToOne
-    private Location locationId;
+    private Location location;
     
     @OneToOne
-    private Professor professorId;
+    private Professor professor;
     
     @OneToOne
     private TimeMeeting time;
 
-    public OfferingMetadata(){}
+    public OfferingMetadata()
+    {
+        offering = new Offering();
+        location = new Location();
+        professor = new Professor();
+        time = new TimeMeeting();
+    }
     
     public long getId() { return id; }
     public void setId( long id_ ) { id = id_; }
     
-    public Offering getOfferingId() { return offeringId; }
-    public void setOfferingId( Offering offeringId_ ) { offeringId = offeringId_; }
+    public Offering getOffering() { return offering; }
+    public void setOffering( Offering offering_ ) { offering = offering_; }
     
-    public Location getLocationId() { return locationId; }
-    public void setLocationId( Location locationId_ ) { locationId = locationId_; }
+    public Location getLocation() { return location; }
+    public void setLocation( Location location_ ) { location = location_; }
 
-    public Professor getProfessorId() { return professorId; }
-    public void setProfessorId( Professor professorId_ ) { professorId = professorId_; }
+    public Professor getProfessor() { return professor; }
+    public void setProfessor( Professor professor_ ) { professor = professor_; }
     
     public TimeMeeting getTime() { return time; }
     public void setTime( TimeMeeting time_ ) { time = time_; }
