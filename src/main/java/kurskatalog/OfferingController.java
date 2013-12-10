@@ -76,7 +76,7 @@ public class OfferingController {
     public String register( Student stud, Offering offer )
     {
         stud.listCourses().add( offer );
-	offer.listRegisteredStudents().add(stud);
+	offer.getRegisteredStudents().add( stud );
         ejb.update( stud );
         return "account.xhtml";
     }
@@ -84,6 +84,7 @@ public class OfferingController {
     public String deregister( Student stud, Offering offer )
     {
         stud.listCourses().remove( offer );
+	offer.getRegisteredStudents().remove( stud );
         ejb.update( stud );
         return "account.xhtml";
     }
