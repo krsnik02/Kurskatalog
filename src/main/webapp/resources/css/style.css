@@ -1,83 +1,108 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+    margin : 0;
+    padding : 0;
+    border : 0;
+    outline : 0;
+    font-size : 100%;
+    vertical-align : baseline;
+    background : transparent;
 }
 
 blockquote, q {
-    quotes:none;
+    quotes : none;
 }
 
 body {
-    line-height:1;
+    line-height : 1;
 }
 
 ol, ul {
-    list-style:none;
+    list-style : none;
 }
 
 :focus {
-    outline:0;
+    outline : 0;
 }
 
 ins {
-    text-decoration:none;
+    text-decoration : none;
 }
 
 del {
-    text-decoration:line-through;
+    text-decoration : line-through;
 }
 
 table {
-    border-collapse:collapse;
-    border-spacing:0;
+    border-collapse : collapse;
+    border-spacing : 0;
 }
 
 html, body {
-    min-height:100%;
+    min-height : 100%;
 }
 
 body {
-    background-color:#fff;
-    width:100%;
-    min-width:1300px;
+    background-color : #fff;
+    width : 100%;
+    min-width : 768px;
 }
 
 q {
-    quotes:"\201c""\201d""\2018""\2019";
+    quotes : "\201c" "\201d" "\2018" "\2019";
 }
-
-/* Header */
 
 #header {
     width : 100%;
-    background : #777;
+    background : #999;
+}
+
+#header a {
+    color : #222;
+    text-decoration : none;
 }
 
 #title {
     width : auto;
     font-size : 2.5em;
     padding : 0.2em;
+    padding-left : 0.4em;
     position : relative;
     float : left;
 }
 
 #account {
     width : auto;
-    font-size : 1em;
-    padding : 1.25em;
+    line-height : 3.5em;
+    padding-right : 0.6em;
     position : relative;
     float : right;
+}
+
+#account a {
+    padding : 0.2em 0.4em;
+    border : 1px solid #bbb;
+    -webkit-border-radius : 0.4em;
+    -moz-border-radius : 0.4em;
+    border-radius : 0.4em;
+    margin-left : 0.4em;
+    background : -webkit-linear-gradient(#aaa, #ccc);
+    background : -moz-linear-gradient(#aaa, #ccc);
+    background : linear-gradient(#aaa, #ccc);
+}
+
+#account a:hover {
+    background : -webkit-linear-gradient(#ccc, #aaa);
+    background : -moz-linear-gradient(#ccc, #aaa);
+    background : linear-gradient(#ccc, #aaa);
 }
 
 #nav {
     width : 100%;
     clear : both;
-    background : #aaa;
+    background : #ccc;
+    margin-bottom : 2em;
+    padding-left : 0.6em;
+    padding-right : 0.4em;
 }
 
 #nav:after {
@@ -88,7 +113,6 @@ q {
 
 #nav li {
     width : auto;
-    font-size : 1em;
     padding : 0.3em;
     padding-left : 0.6em;
     padding-right : 0.6em;
@@ -96,7 +120,7 @@ q {
 }
 
 #nav li:hover {
-    background : #888;
+    background : #aaa;
 }
 
 #nav ul ul {
@@ -107,7 +131,7 @@ q {
 
 #nav ul li:hover ul {
     display : block;
-    background : #aaa;
+    background : #ccc;
     margin-left : -0.6em
 }
 
@@ -116,6 +140,10 @@ q {
 }
 
 #nav ul li:hover ul li:hover {
-    background: #888;
+    background: #aaa;
 }
 
+h2 {
+    text-align : center;
+    font-size : 2em;
+}
