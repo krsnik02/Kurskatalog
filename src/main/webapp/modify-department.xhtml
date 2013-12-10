@@ -16,7 +16,7 @@
 		<div id="modify">
 			<h:form id="modify-dept" prependId="false">
 				<h:inputHidden value="#{departmentController.department.id}" />
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" columnClasses="right, left">
 					<h:outputLabel value="Name : " />
 					<h:inputText value="#{departmentController.department.name}" />
 					<h:outputLabel value="Code :" />

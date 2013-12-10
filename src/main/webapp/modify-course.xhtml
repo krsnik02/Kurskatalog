@@ -16,7 +16,7 @@
 		<div id="modify">
 			<h:form id="modify-course" prependId="false">
 				<h:inputHidden value="#{courseController.course.id}"/>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" columnClasses="right, left">
 					<h:outputLabel value="Code : " />
 					<h:panelGroup>
 						<h:selectOneMenu value="#{courseController.course.department.id}">

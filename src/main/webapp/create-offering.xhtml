@@ -15,7 +15,7 @@
 		<h2>Add Course Offering</h2>
 		<div id="create">
 			<h:form>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" columnClasses="right, left">
 					<h:outputLabel value="Course : " />
 					<h:selectOneMenu value="#{offeringController.offering.course.id}">
 						<f:selectItems value="#{courseController.courseList}" var="course" 

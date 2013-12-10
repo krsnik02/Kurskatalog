@@ -215,6 +215,19 @@ h3 {
 }
 
 
+#create td, #modify td, #search td {
+    padding : 0.1em 0.3em;
+}
+
+.left {
+    text-align : left;
+}
+
+.right {
+    text-align : right;
+}
+
+
 #departments {
     display : table;
     margin-top : 1em;

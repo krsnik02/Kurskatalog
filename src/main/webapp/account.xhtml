@@ -23,7 +23,7 @@
 			<h:form>
 				<h:inputHidden value="#{loginController.account.id}" />
 				<h:inputHidden value="#{loginController.credentials.username}" />
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="2" columnClasses="right, left">
 					<h:outputLabel value="Username : " />
 					<h:inputText value="#{loginController.account.credentials.username}" />
 					<h:outputLabel value="Current Password : " />
