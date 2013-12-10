@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="htp://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title>Kurskatalog - Register for Courses</title>
@@ -58,13 +58,5 @@
 				<h:outputText value="#{offer.offering.seats}" />
 			</h:column>
 		</h:dataTable>
-		    <c:if test="#{loginController.administrator}">
-				<h:column>
-					<h:form><h:commandLink value="Modify" action="#{offeringController.modifyOffering(offering)}" /></h:form>
-				</h:column>
-				<h:column>
-					<h:form><h:commandLink value="Delete" action="#{offeringController.deleteOffering(offering)}" /></h:form>
-				</h:column>
-		    </c:if>
 	</h:body>
 </html>
