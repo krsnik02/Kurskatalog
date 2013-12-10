@@ -76,6 +76,7 @@ public class OfferingController {
     public String register( Student stud, Offering offer )
     {
         stud.listCourses().add( offer );
+	offer.listRegisteredStudents().add(stud);
         ejb.update( stud );
         return "account.xhtml";
     }

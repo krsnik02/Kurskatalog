@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -47,6 +48,9 @@ public class Offering
 
     @ManyToOne
     private Professor professor;
+    
+    @OneToMany
+    List<Student> registeredStudents;
 
 
     public Offering() 
@@ -60,6 +64,16 @@ public class Offering
     
     public long getId() { return id; }
     public void setId( long id_ ) { id = id_; }
+    
+    public List<Student> listRegisteredStudents()
+    {
+	return registeredStudents;
+    }
+    
+    public void setRegisteredStudents( List<Student> registeredStudents_ )
+    {
+	registeredStudents = registeredStudents_;
+    }
     
     public Course getCourse() { return course; }
     public void setCourse( Course course_ ) { course = course_; };
