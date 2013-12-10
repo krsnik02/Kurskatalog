@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" 
-      xmlns:ui="http://java.sun.com/jsf/facelets" 
-     lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en"
+      xmlns:f="http://java.sun.com/jsf/core">
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<title>Kurskatalog - Add Course Offering</title>
+		<title>Kurskatalog - Modify Course</title>
 		<h:outputStylesheet name="css/style.css" />
 	</h:head>
 	<h:body>
 		<ui:include src="WEB-INF/header.xhtml" />
-		<h2>Add Course Offering</h2>
-		<h:form>
+		<h2>Modify Course</h2>
+		<h:form id="modify-course" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Course : " />
 				<h:selectOneMenu value="#{offeringController.offering.course.id}">
@@ -52,7 +49,7 @@
                                                        itemValue="#{loc.id}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
-			<h:commandButton value="Create" action="#{offeringController.persistOffering()}" />
+			<h:commandButton value="Modify" action="#{offeringController.updateOffering()}" />
 		</h:form>
 	</h:body>
 </html>

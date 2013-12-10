@@ -12,9 +12,9 @@
 		<h:form id="new-location" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Building : " />
-				<h:inputText id="firstName" value="#{locationController.location.building}" />
+				<h:inputText value="#{locationController.location.building}" />
 				<h:outputLabel value="Room # : " />
-				<h:inputText id="lastName" value="#{locationController.location.room}" />
+				<h:inputText value="#{locationController.location.room}" />
 			</h:panelGrid>
 		    <h:commandButton value="Create" action="#{locationController.createLocation()}" />
 		</h:form>
