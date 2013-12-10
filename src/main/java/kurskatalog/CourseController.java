@@ -4,8 +4,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 
 @ManagedBean
 public class CourseController
@@ -38,7 +36,7 @@ public class CourseController
 
     public String persistCourse()
     {
-	Set<Prerequisite> prereqs = new HashSet<Prerequisite>();
+	List<Prerequisite> prereqs = new ArrayList<Prerequisite>();
 	for ( String id : prerequisiteIds )
 	{
 		Prerequisite prereq = new Prerequisite();

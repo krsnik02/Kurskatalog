@@ -33,7 +33,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
-				<h:outputText value="#{courseController.listCourses()}" />
+				<h:outputText value="#{course.prerequisites}" />
 			</h:column>
 			<c:if test="#{loginController.administrator}">
 				<h:column>

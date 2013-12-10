@@ -4,8 +4,8 @@
  */
 package kurskatalog;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +35,7 @@ public class Course
     Department department;
     
     @OneToMany(cascade=CascadeType.PERSIST)
-    private Set<Prerequisite> prerequisites;
+    private List<Prerequisite> prerequisites;
     
     private int code;
     private CourseType type;
@@ -43,7 +43,7 @@ public class Course
     public Course() 
     {
         department = new Department();
-	prerequisites = new HashSet<Prerequisite>();
+	prerequisites = new ArrayList<Prerequisite>();
     }
     
     public long getId(){ return id; }
@@ -64,6 +64,6 @@ public class Course
     public CourseType getType(){ return type; }
     public void setType( CourseType type_ ){ type = type_; }
 
-    public Set<Prerequisite> getPrerequisites() { return prerequisites; }
-    public void setPrerequisites( Set<Prerequisite> prereqs ) { prerequisites = prereqs; }
+    public List<Prerequisite> getPrerequisites() { return prerequisites; }
+    public void setPrerequisites( List<Prerequisite> prereqs ) { prerequisites = prereqs; }
 }
