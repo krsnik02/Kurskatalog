@@ -69,6 +69,13 @@ public class OfferingController {
     {
         stud.listCourses().add( offer );
         ejb.update( stud );
-        return "list-offerings.xhtml";
+        return "account.xhtml";
+    }
+
+    public String deregister( Student stud, Offering offer )
+    {
+        stud.listCourses().remove( offer );
+        ejb.update( stud );
+        return "account.xhtml";
     }
 }
