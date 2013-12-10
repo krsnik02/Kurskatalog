@@ -13,15 +13,15 @@
 		<h:form id="modify-dept" prependId="false">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Name : " />
-				<h:inputText id="firstName" value="#{departmentController.department.name}" />
+				<h:inputText value="#{departmentController.department.name}" />
 				<h:outputLabel value="Code :" />
-				<h:inputText id="lastName" value="#{departmentController.department.code}" />
+				<h:inputText value="#{departmentController.department.code}" />
 				<h:outputLabel value="Head :" />
 				<h:selectOneMenu value="#{departmentController.department.head.id}">
 					<f:selectItems value="#{userController.listProfessors()}" var="prof" itemLabel="#{prof.firstName} #{prof.lastName}" itemValue="#{prof.id}" />
 				</h:selectOneMenu>
 			</h:panelGrid>
-			<h:commandButton value="Modify" action="#{locationController.updateLocation()}" />
+			<h:commandButton value="Modify" action="#{departmentController.updateDepartment()}" />
 		</h:form>
 	</h:body>
 </html>

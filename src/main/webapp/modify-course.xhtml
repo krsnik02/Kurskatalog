@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" lang="en" xml:lang="en"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<h:head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title>Kurskatalog - Modify Course</title>
+		<h:outputStylesheet name="css/style.css" />
+	</h:head>
+	<h:body>
+		<ui:include src="WEB-INF/header.xhtml" />
+		<h2>Modify Course</h2>
+		<h:form id="modify-course" prependId="false">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Code : " />
+				<h:panelGroup>
+					<h:selectOneMenu value="#{courseController.course.department.id}">
+						<f:selectItems value="#{departmentController.listDepartments()}" var="dept" 
+							       itemLabel="#{dept.code}" itemValue="#{dept.id}" />
+					</h:selectOneMenu>
+					<h:inputText value="#{courseController.course.code}" />
+				</h:panelGroup>
+				<h:outputLabel value="Name : " />
+				<h:inputText value="#{courseController.course.name}" />
+				<h:outputLabel value="Description : " />
+				<h:inputTextarea value="#{courseController.course.description}" />
+				<h:outputLabel value="Type : " />
+				<h:selectOneMenu value="#{courseController.course.type}">
+					<f:selectItems value="#{courseController.courseTypes}" var="type" 
+                                                       itemLabel="#{type}" itemValue="#{type}" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Prerequisites : " />
+				<h:selectManyListbox value="#{courseController.course.id}">
+						<f:selectItems value="#{courseController.listCourses()}" var="course" 
+							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
+							       itemValue="#{course.id}" />
+				</h:selectManyListbox>
+				<h:outputLabel value="Corequisites : " />
+				<h:selectManyListbox value="#{courseController.course.id}">
+						<f:selectItems value="#{courseController.listCourses()}" var="course" 
+							       itemLabel="#{course.department.code} #{course.code} (#{course.name})" 
+							       itemValue="#{course.id}" />
+				</h:selectManyListbox>
+			</h:panelGrid>
+			<h:commandButton value="Modify" action="#{courseController.updateCourse()}" />
+		</h:form>
+	</h:body>
+</html>
