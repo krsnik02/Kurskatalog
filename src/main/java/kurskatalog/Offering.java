@@ -29,9 +29,9 @@ public class Offering
     @OneToOne
     private Course course;
     
-    String semester;
-    String section;
-    int seats;
+    private String semester;
+    private String section;
+    private long seats;
 
     @Temporal(TemporalType.TIME)
     private Date startTime;
@@ -41,8 +41,8 @@ public class Offering
 
     private List<DayOfWeek> daysOfWeek;
 
-    @OneToOne
-    private Location location;
+    private String building;
+    private long room;
 
     @OneToOne
     private Professor professor;
@@ -53,7 +53,6 @@ public class Offering
         course = new Course();
 	startTime = new Date();
         stopTime = new Date();
-        location = new Location();
         professor = new Professor();
         daysOfWeek = new ArrayList<DayOfWeek>();
     }
@@ -70,8 +69,8 @@ public class Offering
     public String getSection() { return section; }
     public void setSection( String section_ ) { section = section_; }
     
-    public int getSeats() { return seats; }
-    public void setSeats( int seats_ ) { seats = seats_; }
+    public long getSeats() { return seats; }
+    public void setSeats( long seats_ ) { seats = seats_; }
    
     public Date getStartTime() { return startTime; }
     public void setStartTime( Date start ) { startTime = start; }
@@ -82,8 +81,11 @@ public class Offering
     public List<DayOfWeek> getDaysOfWeek() { return daysOfWeek; }
     public void setDaysOfWeek( List<DayOfWeek> days ) { daysOfWeek = days; }
 
-    public Location getLocation() { return location; }
-    public void setLocation( Location loc ) { location = loc; }
+    public String getBuilding() { return building; }
+    public void setBuilding( String bldg ) { building = bldg; }
+
+    public long getRoom() { return room; }
+    public void setRoom( long room_ ) { room = room_; }
 
     public Professor getProfessor() { return professor; }
     public void setProfessor( Professor prof ) { professor = prof; }

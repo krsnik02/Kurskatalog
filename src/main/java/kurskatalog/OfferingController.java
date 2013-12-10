@@ -39,25 +39,25 @@ public class OfferingController {
     {
 	ejb.persist( offering );
 	offering = new Offering();
-        return "list-OfferingMetadata.xhtml";
+        return "list-offerings.xhtml";
     }
 
     public String modifyOffering( Offering offer )
     {
         offering = offer;
-        return "modify-OfferingMetadata.xhtml";
+        return "modify-offering.xhtml";
     }
     
     public String updateOffering()
     {
         ejb.update( offering );
 	offering = new Offering();
-        return "list-OfferingMetadata.xhtml";
+        return "list-offerings.xhtml";
     }
     
     public String deleteOffering( Offering offer )
     {
         ejb.delete( offer );
-        return "list-OfferingMetadata.xhtml";
+        return "list-offerings.xhtml";
     }
 }

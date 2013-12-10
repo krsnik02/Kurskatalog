@@ -73,9 +73,4 @@ public class PersistenceEJB
     {
         return em.createQuery( "SELECT o FROM Offering o", Offering.class ).getResultList();
     }
-
-    public List<Location> listLocations()
-    {
-        return em.createQuery( "SELECT l FROM Location l", Location.class ).getResultList();
-    }
 }
