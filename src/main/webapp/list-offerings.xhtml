@@ -15,6 +15,33 @@
 		<ui:include src="WEB-INF/header.xhtml" />
 		<h2>Course Offerings</h2>
 
+		<div id="search">
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Course Code : " />
+					<h:panelGroup>
+						<h:selectOneMenu value="#{offeringController.searchQuery.departmentCode}">
+							<f:selectItem itemLabel="NONE" itemValue="" />
+							<f:selectItems value="#{departmentController.listDepartments()}" var="dept"
+            							       itemLabel="#{dept.code}" itemValue="#{dept.code}" />
+						</h:selectOneMenu>
+						<h:inputText value="#{offeringController.searchQuery.courseCode}" />
+						<h:inputText value="#{offeringController.searchQuery.section}" />
+					</h:panelGroup>
+					<h:outputLabel value="Course Name : " />
+					<h:inputText value="#{offeringController.searchQuery.courseName}" />
+					<h:outputLabel value="Professor : " />
+					<h:panelGroup>
+						<h:inputText value="#{offeringController.searchQuery.professorFirstName}" />
+						<h:inputText value="#{offeringController.searchQuery.professorLastName}" /> 
+					</h:panelGroup>
+				</h:panelGrid>
+				<h:commandLink class="button" value="Search" action="#{offeringController.search}">
+					<f:ajax execute="@form" render=":offeringlist" />
+				</h:commandLink>
+			</h:form>
+		</div>
+
 		<div id="listing">
 			<h:dataTable id="offeringlist" value="#{offeringController.offeringList}" var="offer" border="1">
 				<h:column>
@@ -89,18 +116,5 @@
 			</c:if>
 		</div>
 
-		<div id="search">
-			<h:form>
-				<h:inputText value="#{offeringController.searchQuery.departmentCode}" />
-				<h:inputText value="#{offeringController.searchQuery.courseCode}" />
-				<h:inputText value="#{offeringController.searchQuery.section}" />
-				<h:inputText value="#{offeringController.searchQuery.courseName}" />
-				<h:inputText value="#{offeringController.searchQuery.professorFirstName}" />
-				<h:inputText value="#{offeringController.searchQuery.professorLastName}" /> 
-				<h:commandLink value="Search" action="#{offeringController.search}">
-					<f:ajax execute="@form" render=":offeringlist" />
-				</h:commandLink>
-			</h:form>
-		</div>
 	</h:body>
 </html>
