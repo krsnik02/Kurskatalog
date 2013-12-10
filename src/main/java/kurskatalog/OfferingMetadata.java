@@ -28,8 +28,8 @@ public class OfferingMetadata {
     @OneToOne
     private Location locationId;
     
-    @OneToMany
-    private List<Professor> professorId;
+    @OneToOne
+    private Professor professorId;
     
     @OneToOne
     private TimeMeeting time;
@@ -45,8 +45,8 @@ public class OfferingMetadata {
     public Location getLocationId() { return locationId; }
     public void setLocationId( Location locationId_ ) { locationId = locationId_; }
 
-    public List<Professor> getProfessorId() { return professorId; }
-    public void setProfessorId( List<Professor> professorId_ ) { professorId = professorId_; }
+    public Professor getProfessorId() { return professorId; }
+    public void setProfessorId( Professor professorId_ ) { professorId = professorId_; }
     
     public TimeMeeting getTime() { return time; }
     public void setTime( TimeMeeting time_ ) { time = time_; }

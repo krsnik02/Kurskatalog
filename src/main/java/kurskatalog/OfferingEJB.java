@@ -39,4 +39,9 @@ public class OfferingEJB {
     {
         return em.createQuery( "SELECT s FROM OfferingMetadata s", OfferingMetadata.class ).getResultList();
     }
+    
+    public List<Professor> listProfessors(){
+	return em.createQuery( "SELECT s FROM Professor s", Professor.class).getResultList();
+	
+    }
 }

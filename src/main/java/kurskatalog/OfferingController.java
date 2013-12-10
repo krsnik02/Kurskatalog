@@ -4,6 +4,7 @@
  */
 package kurskatalog;
 
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 /**
@@ -17,9 +18,19 @@ public class OfferingController {
     @EJB
     private OfferingEJB offeringEJB;
     
+    @EJB
+    private CourseEJB courseEJB;
+    
     Offering offering = new Offering();
     OfferingMetadata offeringMetadata = new OfferingMetadata();
     
+    public List<Course> getCourses(){
+	return courseEJB.listCourses();
+    }
+    
+    public List<Professor> getProfessors(){
+	return offeringEJB.listProfessors();
+    }
     
     public OfferingController( ){ offeringMetadata.setOfferingId(offering); }
     
