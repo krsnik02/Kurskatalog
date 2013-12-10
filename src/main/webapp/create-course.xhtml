@@ -32,6 +32,16 @@
 					<f:selectItems value="#{courseController.courseTypes}" var="type" 
                                                        itemLabel="#{type}" itemValue="#{type}" />
 				</h:selectOneMenu>
+				<h:outputLabel value="Prerequisites : " />
+				<h:selectManyListbox value="#{courseController.course.department.id}">
+						<f:selectItems value="#{courseController.listCourses()}" var="course" 
+							       itemLabel="#{course.department}" itemValue="#{dept.name}" />
+				</h:selectManyListbox>
+				<h:outputLabel value="Corequisites : " />
+				<h:selectManyListbox value="#{courseController.course.department.id}">
+						<f:selectItems value="#{courseController.listCourses()}" var="course" 
+							       itemLabel="#{course.department}" itemValue="#{dept.name}" />
+				</h:selectManyListbox>
 			</h:panelGrid>
 			<h:commandButton value="Create" action="#{courseController.persistCourse()}" />
 		</h:form>
