@@ -39,7 +39,6 @@
 		<c:if test="#{loginController.professor}">
 		    <h3>Departments</h3>
 		    <h:outputText value="You are the head of the following departments: " />
-		    <h:outputText value="#{loginController.accountAsProfessor.headOf}" />
 		    <ui:repeat var="dept" value="#{loginController.accountAsProfessor.headOf}" varStatus="status">
 		    <tr>
 			    <td>#{dept.name}</td>
@@ -67,7 +66,12 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="Pre/Corequisites" /></f:facet>
-				<h:outputText value="#{offer.course.prerequisites}" />
+				<ui:repeat var="pcreq" value="#{offer.course.prerequisites}" varStatus="status">
+				<tr>
+				    <td>#{pcreq.department.code}</td>
+				    <td>#{pcreq.code}</td>
+				</tr>
+		    </ui:repeat>
 			</h:column>
 		</h:dataTable>
 		</c:if>
