@@ -20,28 +20,28 @@ public class OfferingEJB {
     @PersistenceContext(unitName = "KurskatalogPU")
     private EntityManager em;
     
-    public void persistOffering( OfferingMetadata offer )
+    public void persistOffering( Offering offer )
     {
 	em.persist( offer );
     }
 
-    public void updateOffering( OfferingMetadata offer )
+    public void updateOffering( Offering offer )
     {
         em.merge( offer );
     }
 
-    public void deleteOffering( OfferingMetadata offer )
+    public void deleteOffering( Offering offer )
     {
         em.remove( em.merge( offer ) );
     }
     
-    public List<OfferingMetadata> listOfferings()
+    public List<Offering> listOfferings()
     {
-        return em.createQuery( "SELECT s FROM OfferingMetadata s", OfferingMetadata.class ).getResultList();
+        return em.createQuery( "SELECT o FROM Offering o", Offering.class ).getResultList();
     }
-    
-    public List<Professor> listProfessors(){
-	return em.createQuery( "SELECT s FROM Professor s", Professor.class).getResultList();
-	
+
+    public List<Location> listLocations()
+    {
+        return em.createQuery( "SELECT l FROM Location l", Location.class ).getResultList();
     }
 }

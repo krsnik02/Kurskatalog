@@ -18,58 +18,49 @@ public class OfferingController {
     @EJB
     private OfferingEJB offeringEJB;
     
-    @EJB
-    private CourseEJB courseEJB;
-    
     Offering offering = new Offering();
-    OfferingMetadata offeringMetadata = new OfferingMetadata();
     
-    public List<Course> listCourses(){
-	return courseEJB.listCourses();
+    public OfferingController() { }
+
+
+    public DayOfWeek[] getDaysOfWeek()
+    {
+        DayOfWeek[] days = { DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, 
+                             DayOfWeek.THURSDAY, DayOfWeek.FRIDAY };
+        return days;
     }
-    
-    public List<Professor> listProfessors(){
-	return offeringEJB.listProfessors();
-    }
-    
-    public OfferingController() { offeringMetadata.setOffering(offering); }
+
+ 
+    public List<Offering> listOfferings() { return offeringEJB.listOfferings(); }
+    public List<Location> listLocations() { return offeringEJB.listLocations(); }
+
 
     public Offering getOffering() { return offering; }
-    public void setOffering( Offering offering_ ) {
-	offering = offering_;
-	offeringMetadata.setOffering(offering);
-    }
+    public void setOffering( Offering offering_ ) { offering = offering_; }
     
-    public OfferingMetadata getOfferingMetadata() { return offeringMetadata; }
-    public void setOffering( OfferingMetadata offeringMetadata_ ) { offeringMetadata = offeringMetadata_; }
-    
-    public String persistOfferingMetadata()
+    public String persistOffering()
     {
-	offeringEJB.persistOffering( offeringMetadata );
-	offeringMetadata = new OfferingMetadata();
+	offeringEJB.persistOffering( offering );
 	offering = new Offering();
-	offeringMetadata.setOffering(offering);
         return "list-OfferingMetadata.xhtml";
     }
 
-    public String modifyOfferingMetadata( OfferingMetadata offeringM )
+    public String modifyOffering( Offering offer )
     {
-        offeringMetadata = offeringM;
+        offering = offer;
         return "modify-OfferingMetadata.xhtml";
     }
     
-    public String updateOfferingMetadata()
+    public String updateOffering()
     {
-        offeringEJB.updateOffering( offeringMetadata );
-	offeringMetadata = new OfferingMetadata();
+        offeringEJB.updateOffering( offering );
 	offering = new Offering();
-	offeringMetadata.setOffering(offering);
         return "list-OfferingMetadata.xhtml";
     }
     
-    public String deleteOfferingMetadata( OfferingMetadata offeringM )
+    public String deleteOffering( Offering offer )
     {
-        offeringEJB.deleteOffering( offeringM );
+        offeringEJB.deleteOffering( offer );
         return "list-OfferingMetadata.xhtml";
     }
 }

@@ -4,10 +4,15 @@
  */
 package kurskatalog;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,9 +33,29 @@ public class Offering {
     String section;
     int seats;
 
+    @Temporal(TemporalType.TIME)
+    private Date startTime;
+
+    @Temporal(TemporalType.TIME)
+    private Date stopTime;
+
+    private List<DayOfWeek> daysOfWeek;
+
+    @OneToOne
+    private Location location;
+
+    @OneToOne
+    private Professor professor;
+
+
     public Offering() 
     {
         course = new Course();
+	startTime = new Date();
+        stopTime = new Date();
+        location = new Location();
+        professor = new Professor();
+        daysOfWeek = new ArrayList<DayOfWeek>();
     }
     
     public long getId() { return id; }
@@ -47,5 +72,19 @@ public class Offering {
     
     public int getSeats() { return seats; }
     public void setSeats( int seats_ ) { seats = seats_; }
-    
+   
+    public Date getStartTime() { return startTime; }
+    public void setStartTime( Date start ) { startTime = start; }
+
+    public Date getStopTime() { return stopTime; }
+    public void setStopTime( Date stop ) { stopTime = stop; }
+
+    public List<DayOfWeek> getDaysOfWeek() { return daysOfWeek; }
+    public void setDaysOfWeek( List<DayOfWeek> days ) { daysOfWeek = days; }
+
+    public Location getLocation() { return location; }
+    public void setLocation( Location loc ) { location = loc; }
+
+    public Professor getProfessor() { return professor; }
+    public void setProfessor( Professor prof ) { professor = prof; }
 }
