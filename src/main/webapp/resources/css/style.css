@@ -248,3 +248,15 @@ h3 {
     float : left;
     vertical-align : middle;
 }
+
+#about {
+    display : table;
+    max-width : 1000px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+#about p {
+    padding : 0.5em;
+    text-indent : 2.5em;
+}
