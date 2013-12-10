@@ -42,8 +42,8 @@ public class Offering {
     public String getSemester() { return semester; }
     public void setSemester( String semester_ ) { semester = semester_; }
 
-    public String getSection() { return section; }
-    public void setSection( String section_ ) { section = section_; }
+    public String getSection() { return classSection; }
+    public void setSection( String section_ ) { classSection = section_; }
     
     public int getSeats() { return seats; }
     public void setSeats( int seats_ ) { seats = seats_; }
