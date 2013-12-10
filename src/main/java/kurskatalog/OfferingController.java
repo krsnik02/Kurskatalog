@@ -7,6 +7,9 @@ package kurskatalog;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import java.util.ArrayList;
+import javax.annotation.PostConstruct;
+
 /**
  *
  * @author Ben Yuly
@@ -18,7 +21,8 @@ public class OfferingController {
     @EJB
     private PersistenceEJB ejb;
     
-    Offering offering = new Offering();
+    private Offering offering = new Offering();
+    private OfferingSearchQuery searchQuery = new OfferingSearchQuery();
     
     public DayOfWeek[] getDaysOfWeek()
     {
@@ -27,17 +31,41 @@ public class OfferingController {
         return days;
     }
  
-    public List<Offering> listOfferings() { return ejb.listOfferings(); }
 
     public Offering getOffering() { return offering; }
     public void setOffering( Offering offering_ ) { offering = offering_; }
     
+    public OfferingSearchQuery getSearchQuery() { return searchQuery; }
+    public void setSearchQuery( OfferingSearchQuery search ) { searchQuery = search; }
+
+    private List<Offering> offeringList;
+    
+    public List<Offering> getOfferingList() { return offeringList; }
+    public void setOfferingList( List<Offering> offerings ) { offeringList = offerings; }
+
+    @PostConstruct
+    public void initialize()
+    {
+        searchQuery = new OfferingSearchQuery();
+        offeringList = ejb.listOfferings( searchQuery );
+    }
+
+ 
+    public String search()
+    {
+        offeringList = ejb.listOfferings( searchQuery );
+        return "list-offerings.xhtml";
+    }
+
+
     public String persistOffering()
     {
 	offering.getProfessor().listCourses().remove(offering);
 	offering.getProfessor().listCourses().add(offering);
+
 	ejb.persist( offering );
 	offering = new Offering();
+        offeringList = ejb.listOfferings( searchQuery );
         return "list-offerings.xhtml";
     }
 
@@ -53,8 +81,10 @@ public class OfferingController {
     {
 	offering.getProfessor().listCourses().remove(offering);
 	offering.getProfessor().listCourses().add(offering);
+
         ejb.update( offering );
 	offering = new Offering();
+        offeringList = ejb.listOfferings( searchQuery );
         return "list-offerings.xhtml";
     }
     
@@ -62,6 +92,8 @@ public class OfferingController {
     {
 	offer.getProfessor().listCourses().remove(offer);
         ejb.delete( offer );
+        offering = new Offering();
+        offeringList = ejb.listOfferings( searchQuery );
         return "list-offerings.xhtml";
     }
 

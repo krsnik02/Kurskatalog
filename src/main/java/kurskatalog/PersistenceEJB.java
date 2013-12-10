@@ -73,20 +73,49 @@ public class PersistenceEJB
 	crit = crit.select( c );
 
 	if ( searchQuery.getDepartmentCode() != null && searchQuery.getDepartmentCode() != "" )
-		crit = crit.where( builder.equal( c.get("department").get("code").as( String.class ), 
-						  searchQuery.getDepartmentCode() ) );
+	    crit = crit.where( builder.equal( c.get( "department" ).get( "code" ).as( String.class ), searchQuery.getDepartmentCode() ) );
 
 	if ( searchQuery.getCourseCode() != null && searchQuery.getCourseCode() != "" )
-		crit = crit.where( builder.equal( c.get("code").as( String.class ), 
-						  searchQuery.getCourseCode() ) );
+	    crit = crit.where( builder.equal( c.get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
 
 	if ( searchQuery.getName() != null && searchQuery.getName() != "" )
-		crit = crit.where( builder.like( c.get("name").as( String.class ),
-						 "%" + searchQuery.getName() + "%" ) );
+	    crit = crit.where( builder.like( c.get( "name" ).as( String.class ), "%" + searchQuery.getName() + "%" ) );
 
         return em.createQuery( crit ).getResultList();
     }
 
+
+    public List<Offering> listOfferings( OfferingSearchQuery searchQuery )
+    {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<Offering> crit = builder.createQuery( Offering.class );
+        Root<Offering> o = crit.from( Offering.class );
+        crit = crit.select( o );
+
+        if ( searchQuery.getDepartmentCode() != null && searchQuery.getDepartmentCode() != "" )
+            crit = crit.where( builder.equal( o.get( "course" ).get( "department" ).get( "code" ).as( String.class ), 
+                                              searchQuery.getDepartmentCode() ) );
+   
+        if ( searchQuery.getCourseCode() != null && searchQuery.getCourseCode() != "" )
+            crit = crit.where( builder.equal( o.get( "course" ).get( "code" ).as( String.class ), searchQuery.getCourseCode() ) );
+
+        if ( searchQuery.getSection() != null && searchQuery.getSection() != "" )
+            crit = crit.where( builder.equal( o.get( "section" ).as( String.class ), searchQuery.getSection() ) );
+
+        if ( searchQuery.getCourseName() != null && searchQuery.getCourseName() != "" )
+            crit = crit.where( builder.like( o.get( "course" ).get( "name" ).as( String.class ), 
+                                             "%" + searchQuery.getCourseName() + "%" ) );
+
+        if ( searchQuery.getProfessorFirstName() != null && searchQuery.getProfessorFirstName() != "" )
+            crit = crit.where( builder.like( o.get( "professor" ).get( "firstName" ).as( String.class ), 
+                                             "%" + searchQuery.getProfessorFirstName() + "%" ) );
+
+        if ( searchQuery.getProfessorLastName() != null && searchQuery.getProfessorLastName() != "" )
+            crit = crit.where( builder.like( o.get( "professor" ).get( "lastName" ).as( String.class ),
+                                             "%" + searchQuery.getProfessorLastName() + "%" ) );
+
+        return em.createQuery( crit ).getResultList();
+    }
 
 
     public List<Department> listDepartments()
@@ -99,10 +128,5 @@ public class PersistenceEJB
 	TypedQuery<Department> query = em.createQuery( "SELECT d FROM Department d where d.head = ?1", Department.class );
 	query.setParameter(1, prof.getId());
 	return query.getResultList();
-    }
-
-    public List<Offering> listOfferings()
-    {
-        return em.createQuery( "SELECT o FROM Offering o", Offering.class ).getResultList();
     }
 }
