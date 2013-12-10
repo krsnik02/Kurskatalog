@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import java.util.List;
 import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 
 @ManagedBean
 public class CourseController
@@ -14,7 +15,7 @@ public class CourseController
     private Course course = new Course();
     private List<String> prerequisiteIds = new ArrayList<String>();
     private List<String> corequisiteIds = new ArrayList<String>();
-    private String searchQuery;
+    private CourseSearchQuery searchQuery = new CourseSearchQuery();
 
     public Course getCourse() { return course; }
     public void setCourse( Course c ) { course = c; }
@@ -25,16 +26,36 @@ public class CourseController
     public List<String> getCorequisiteIds() { return corequisiteIds; }
     public void setCorequisiteIds( List<String> ids ) { corequisiteIds = ids; }
 
-    public String getSearchQuery() { return searchQuery; }
-    public void setSearchQuery( String query ) { searchQuery = query; }
+    public CourseSearchQuery getSearchQuery() { return searchQuery; }
+    public void setSearchQuery( CourseSearchQuery query ) { searchQuery = query; }
 
 
-    public List<Course> listCourses() { return ejb.listCourses(); }
+
+    private List<Course> courseList;
+
+    public List<Course> getCourseList() { return courseList; }
+    public void setCourseList( List<Course> courses ) { courseList = courses; }
+
+
+    @PostConstruct
+    public void initialize()
+    {
+        courseList = ejb.listCourses( new CourseSearchQuery() );
+    }
+
+
 
     public CourseType[] getCourseTypes() 
     {
         CourseType[] types = { CourseType.LEC, CourseType.LAB, CourseType.SEM, CourseType.STU };
         return types;
+    }
+
+
+    public String search()
+    {
+        courseList = ejb.listCourses( searchQuery );
+        return "list-courses.xhtml";
     }
 
 
@@ -58,6 +79,8 @@ public class CourseController
 
         ejb.persist( course );
 	course = new Course();
+        courseList = ejb.listCourses( searchQuery );
+
 	return "list-courses.xhtml";
     }
 
@@ -101,6 +124,8 @@ public class CourseController
 
         ejb.update( course );
         course = new Course();
+        courseList = ejb.listCourses( searchQuery );    
+
         return "list-courses.xhtml";
     }
 
@@ -108,6 +133,9 @@ public class CourseController
     public String deleteCourse( Course c )
     {
         ejb.delete( c );
+        course = new Course();
+        courseList = ejb.listCourses( searchQuery );
+
         return "list-courses.xhtml";
     }
 }

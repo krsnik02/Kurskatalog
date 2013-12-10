@@ -16,13 +16,15 @@
 		<h2>Course Catalog</h2>
 
 		<h:form>
-			<h:inputText value="#{courseController.searchQuery}" />
+			<h:inputText value="#{courseController.searchQuery.departmentCode}" />
+			<h:inputText value="#{courseController.searchQuery.courseCode}" />
+			<h:inputText value="#{courseController.searchQuery.name}" />
 			<h:commandLink value="Search" action="#{courseController.search}">
 				<f:ajax execute="@form" render=":courselist" />
 			</h:commandLink>
 		</h:form>
 
-		<h:dataTable id="courselist" value="#{courseController.listCourses()}" var="course" border="1">
+		<h:dataTable id="courselist" value="#{courseController.courseList}" var="course" border="1">
 			<h:column>
 				<f:facet name="header"><h:outputText value="Code" /></f:facet>
 				<h:outputFormat value="{0} {1}">

@@ -6,6 +6,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.NoResultException;
 import java.util.List;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
 public class PersistenceEJB
@@ -60,9 +63,27 @@ public class PersistenceEJB
         return em.createQuery( "SELECT a FROM Administrator a", Administrator.class ).getResultList();
     }
 
-    public List<Course> listCourses()
+    public List<Course> listCourses( CourseSearchQuery searchQuery )
     {
-        return em.createQuery( "SELECT c FROM Course c", Course.class ).getResultList();
+	CriteriaBuilder builder = em.getCriteriaBuilder();
+	CriteriaQuery<Course> crit = builder.createQuery( Course.class );
+
+	Root<Course> c = crit.from( Course.class );
+	crit = crit.select( c );
+
+	if ( searchQuery.getDepartmentCode() != null && searchQuery.getDepartmentCode() != "" )
+		crit = crit.where( builder.equal( c.get("department").get("code").as( String.class ), 
+						  searchQuery.getDepartmentCode() ) );
+
+	if ( searchQuery.getCourseCode() != null && searchQuery.getCourseCode() != "" )
+		crit = crit.where( builder.equal( c.get("code").as( String.class ), 
+						  searchQuery.getCourseCode() ) );
+
+	if ( searchQuery.getName() != null && searchQuery.getName() != "" )
+		crit = crit.where( builder.equal( c.get("name").as( String.class ),
+						  searchQuery.getName() ) );
+
+        return em.createQuery( crit ).getResultList();
     }
 
     public List<Department> listDepartments()
