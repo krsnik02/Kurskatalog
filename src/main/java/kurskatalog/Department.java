@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Department {
     private String name;
     private String code;
     
-    @ManyToOne
+    @OneToOne
     private Professor head;
     
     public Department() 

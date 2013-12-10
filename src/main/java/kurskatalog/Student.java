@@ -17,12 +17,12 @@ public class Student extends Account
         registeredCourses = new ArrayList<Offering>();
     }
     
-    public List<Offering> getRegisteredCourses()
+    public List<Offering> listCourses()
     {
 	return registeredCourses;
     }
     
-    public void setRegisteredCourses( List<Offering> registeredCourses_ )
+    public void setCourses( List<Offering> registeredCourses_ )
     {
 	registeredCourses = registeredCourses_;
     }

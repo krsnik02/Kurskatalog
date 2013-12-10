@@ -23,6 +23,7 @@ public class DepartmentController
 
     public String persistDepartment()
     {
+	department.getHead().setHeadOf(department);
         ejb.persist( department );
 	department = new Department();
         return "list-departments.xhtml";
