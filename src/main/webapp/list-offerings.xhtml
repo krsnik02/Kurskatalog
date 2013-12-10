@@ -34,15 +34,19 @@
 			</h:column>
 		    	<h:column>
 				<f:facet name="header"><h:outputText value="Start Time" /></f:facet>
-				<h:outputText value="#{offer.startTime}" />
+				<h:outputText value="#{offer.startTime}">
+					<f:convertDateTime pattern="hh:mm a" type="time" />
+				</h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="End Time" /></f:facet>
-				<h:outputText value="#{offer.stopTime}" />
+				<h:outputText value="#{offer.stopTime}">
+					<f:convertDateTime pattern="hh:mm a" type="time" />
+				</h:outputText>
 			</h:column>
 		    	<h:column>
 				<f:facet name="header"><h:outputText value="Days Of Week" /></f:facet>
-				<h:outputText value="#{offer.daysOfWeek}" />
+				<h:outputText value="#{offer.daysOfWeek}"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header"><h:outputText value="seats" /></f:facet>

@@ -26,11 +26,11 @@
 				<h:inputText value="#{offeringController.offering.seats}" />
 				<h:outputLabel value="Start Time : " />
 				<h:inputText value="#{offeringController.offering.startTime}">
-					<f:convertDateTime pattern="hh:mm" type="time" />
+					<f:convertDateTime pattern="hh:mm a" type="time" />
 				</h:inputText>
 				<h:outputLabel value="Stop Time : " />
 				<h:inputText value="#{offeringController.offering.stopTime}">
-					<f:convertDateTime pattern="hh:mm" type="time" />
+					<f:convertDateTime pattern="hh:mm a" type="time" />
 				</h:inputText>
 				<h:outputLabel value="Days of Week : " />
 				<h:selectManyCheckbox value="#{offeringController.offering.daysOfWeek}">
