@@ -61,11 +61,40 @@ public class CourseController
     public String modifyCourse( Course c )
     {
         course = c;
+	prerequisiteIds = new ArrayList<String>();
+	corequisiteIds = new ArrayList<String>();
+	for ( Prerequisite preq : course.getPrerequisites() )
+        {
+            if ( preq.isCorequisite() )
+	    {
+	        prerequisiteIds.add( Long.toString( preq.getId() ) );
+	    }
+            else
+            {
+                corequisiteIds.add( Long.toString( preq.getId() ) );
+            }
+        }
 	return "modify-course.xhtml";
     }
 
     public String updateCourse()
     {
+	List<Prerequisite> prereqs = new ArrayList<Prerequisite>();
+	for ( String id : prerequisiteIds )
+	{
+		Prerequisite prereq = new Prerequisite();
+		prereq.getCourse().setId( Long.parseLong( id ) );
+		prereqs.add( prereq );
+	}
+	for ( String id : corequisiteIds )
+	{
+		Prerequisite coreq = new Prerequisite();
+		coreq.getCourse().setId( Long.parseLong( id ) );
+		coreq.setCorequisite( true );
+		prereqs.add( coreq );
+	}
+        course.setPrerequisites( prereqs );
+
         ejb.update( course );
         course = new Course();
         return "list-courses.xhtml";
